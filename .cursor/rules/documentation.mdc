@@ -1,0 +1,515 @@
+---
+alwaysApply: true
+---
+
+# Documentation Standards and Rules
+
+**This file is the SINGLE SOURCE OF TRUTH for all documentation standards, templates, naming conventions, and code-to-documentation mapping rules.**
+
+- **For AI Agents:** This file contains all rules and standards that must be followed
+- **For Humans:** See `README.md` for the actual directory structure and organization
+- **For Templates:** The documentation template is included in this file (see "Documentation File Template" section)
+
+## Temporary Documentation Files
+
+- **Location**: All temporary analysis, recommendations, and planning documents go in `@docs/temp/`
+- **When to Create**: Only create temporary documentation files when explicitly requested or when providing detailed analysis/planning that the user might want to reference
+- **Types of Files**:
+  - Analysis documents (e.g., code analysis, refactoring recommendations)
+  - Planning documents (e.g., migration plans, consolidation strategies)
+  - Temporary notes or research
+- **Note**: These are NOT project documentation - they are temporary reference materials
+- **Cleanup**: These files can be deleted after the work is complete or kept for reference as needed
+- **IMPORTANT**: **Ignore all files in `@docs/temp/` unless explicitly mentioned by the user** - Do not read, reference, or update temp files unless the user specifically asks about them
+
+## Documentation Sync Rules
+
+**CRITICAL**: When making ANY changes to code (frontend or backend), you MUST update the corresponding documentation files. Documentation must stay in sync with code changes.
+
+### General Rules
+
+1. **Always Update Documentation**: Every code change requires documentation update
+2. **Update Immediately**: Update docs as part of the same change, not as a separate task
+3. **Check Related Docs**: One code change may require updates to multiple documentation files
+4. **Verify Accuracy**: After code changes, verify documentation still accurately describes the implementation
+5. **Update Diagrams**: If code changes affect architecture or flow, update relevant inline Mermaid diagrams in markdown files
+6. **Diagram Format**: All Mermaid diagrams must be included inline in markdown files using ` ```mermaid ` code blocks (not in separate `.mmd` files)
+7. **Ignore Temp Files**: **Do NOT read, reference, or update files in `@docs/temp/` unless explicitly mentioned by the user** - These are temporary files and not part of the documentation structure
+
+### Code Change → Documentation Mapping
+
+**How to Find Documentation Files:**
+
+1. **Check `README.md`** - Contains the current directory structure and file organization
+2. **Use Directory-Based Mapping** - Match code location to documentation directory:
+   - `frontend/src/components/**` → `@docs/architecture/` (architecture docs) + `@docs/features/` (feature docs)
+   - `frontend/src/types/**` → `@docs/data-model/` (data model docs)
+   - `frontend/src/contexts/**` → `@docs/architecture/` (state management docs)
+   - `frontend/src/utils/**` → `@docs/architecture/` (utilities) + `@docs/features/` (if feature-specific)
+   - `backend/src/**` → `@docs/frameworks/` (backend framework docs) + `@docs/architecture/` (system architecture)
+   - `backend/src/db/**` → `@docs/database/` (database docs) + `@docs/data-model/` (data models)
+3. **Search for Related Files** - Look for files with matching names/patterns in the appropriate directory
+4. **Check README Files** - Each documentation directory has a README.md with file listings
+5. **Exclude Temp Directory** - **Do NOT include files from `@docs/temp/`** in documentation searches or updates unless explicitly mentioned
+
+#### Mapping Patterns
+
+**Frontend Code → Documentation:**
+
+- **Components** (`frontend/src/components/**`):
+  - Primary: Architecture documentation in `@docs/architecture/` (find main architecture file)
+  - Secondary: Feature documentation in `@docs/features/` (match component name/feature to feature doc)
+- **Types/Interfaces** (`frontend/src/types/**`):
+  - Primary: Type definitions in `@docs/data-model/` (find files with "type" or "data-model" in name)
+  - Secondary: Data model overview in `@docs/data-model/` (find overview file)
+- **Context/State** (`frontend/src/contexts/**`):
+  - Primary: Architecture docs in `@docs/architecture/` (state management sections)
+- **Utilities** (`frontend/src/utils/**`):
+  - Primary: Architecture docs in `@docs/architecture/` (utilities section)
+  - Secondary: Feature docs in `@docs/features/` (if utility is feature-specific)
+- **Routing/Navigation** (`frontend/src/App.tsx`, navigation files):
+  - Primary: Architecture docs in `@docs/architecture/` (routing/navigation sections)
+- **Authentication** (`frontend/src/contexts/AuthContext.tsx`, `frontend/src/utils/auth.ts`):
+  - Primary: Architecture docs in `@docs/architecture/` (authentication sections)
+- **Forms** (`frontend/src/components/*Form.tsx`):
+  - Primary: Feature docs in `@docs/features/` (match form type to feature)
+  - Secondary: Architecture docs in `@docs/architecture/` (if form architecture changes)
+- **Styling** (`frontend/src/styles/**`, `frontend/src/index.css`):
+  - Primary: Framework docs in `@docs/frameworks/` (find frontend framework file)
+- **Configuration** (`frontend/vite.config.ts`, `frontend/package.json`):
+  - Primary: Framework docs in `@docs/frameworks/` (find frontend/utilities framework files)
+
+**Backend Code → Documentation:**
+
+- **Server/API** (`backend/src/server.ts`, `backend/src/routes/**`, `backend/src/controllers/**`):
+  - Primary: Framework docs in `@docs/frameworks/` (find backend framework file)
+  - Secondary: Architecture docs in `@docs/architecture/` (system architecture)
+  - Tertiary: Feature docs in `@docs/features/` (if API is feature-specific)
+- **Data Models/Schemas** (`backend/src/models/**`, `backend/src/schemas/**`):
+  - Primary: Data model docs in `@docs/data-model/` (find type/model files)
+  - Secondary: Data model overview in `@docs/data-model/` (if relationships change)
+- **Database** (`backend/src/db/**`, database migrations):
+  - Primary: Database docs in `@docs/database/` (find overview, API, schema files)
+  - Secondary: Data model docs in `@docs/data-model/` (if data model changes)
+- **Middleware** (`backend/src/middleware/**`):
+  - Primary: Framework docs in `@docs/frameworks/` (find backend framework file)
+- **Configuration** (`backend/tsconfig.json`, `backend/package.json`):
+  - Primary: Framework docs in `@docs/frameworks/` (find backend/utilities framework files)
+
+**Project Structure → Documentation:**
+
+- **New Files/Directories**:
+  - Primary: `@docs/README.md` (directory structure section)
+  - Secondary: Relevant documentation in affected directories
+- **File Naming Changes**:
+  - Primary: `@docs/README.md` (naming conventions section)
+
+**Feature-Specific Mapping:**
+
+- **Component-Based Features** (`frontend/src/components/[feature-name]/**`):
+  - Find or create feature doc in `@docs/features/` matching feature name
+  - Update architecture docs in `@docs/architecture/` if architecture changes
+- **Data-Based Features** (`frontend/src/data/[feature-name].ts`):
+  - Find feature doc in `@docs/features/` matching feature name
+  - May have multiple related files (e.g., `*-data-structures.md`, `*-process.md`)
+
+### Documentation Update Checklist
+
+When making code changes, use this checklist:
+
+- [ ] Check `README.md` to understand current documentation structure
+- [ ] Identify affected documentation directories using mapping patterns above
+- [ ] Search for relevant documentation files in identified directories
+- [ ] Update type definitions if types/interfaces changed
+- [ ] Update component documentation if components changed
+- [ ] Update feature documentation if feature behavior changed
+- [ ] Update architecture docs if architecture changed
+- [ ] Update inline Mermaid diagrams in markdown files if flow/architecture changed
+- [ ] Update project structure in `@docs/README.md` if files/directories changed
+- [ ] Verify all links in updated documentation still work
+- [ ] Check related documentation files for consistency
+
+### Quick Reference: Change Type → Documentation Location Pattern
+
+| Change Type             | Primary Location Pattern                                 | Secondary Location Pattern                        |
+| ----------------------- | -------------------------------------------------------- | ------------------------------------------------- |
+| New Component           | `@docs/architecture/` (main architecture file)           | `@docs/features/` (matching feature name)         |
+| Component Logic Change  | `@docs/architecture/` (architecture file)                | `@docs/features/` (matching feature name)         |
+| Type/Interface Change   | `@docs/data-model/` (files with "type" or "data-model")  | `@docs/data-model/` (overview file)               |
+| State Management Change | `@docs/architecture/` (state management sections)        | Same file (update inline Mermaid diagrams)        |
+| New API Endpoint        | `@docs/frameworks/` (backend framework file)             | `@docs/features/` (matching feature name)         |
+| Database Schema Change  | `@docs/database/` (overview, API, schema files)          | `@docs/data-model/` (overview file with diagrams) |
+| New Feature             | `@docs/features/` (create or find matching feature file) | `@docs/architecture/` (architecture file)         |
+| Dependency Added        | `@docs/frameworks/` (frontend/backend framework files)   | `@docs/frameworks/` (utilities framework file)    |
+| Config Change           | `@docs/frameworks/` (matching framework file)            | `@docs/frameworks/README.md` (if exists)          |
+| File Structure Change   | `@docs/README.md` (directory structure section)          | Relevant documentation in affected directories    |
+
+**Note:** Always check `README.md` first to see the current directory structure and find exact file names.
+
+### Enforcement Rules
+
+1. **Before Committing**: Verify documentation is updated
+2. **During Code Review**: Check that documentation changes are included
+3. **If Documentation Missing**: Stop and update documentation before proceeding
+4. **If Unsure**:
+   - Check `README.md` for current structure
+   - Use mapping patterns above to identify documentation location
+   - Search for related files in identified directories
+   - Ask for clarification if still uncertain
+5. **Diagrams**: Always update inline Mermaid diagrams in markdown files when architecture/flow changes
+
+### Important Notes
+
+- **This is a PROTOTYPE**: Keep documentation simple and practical, no high-level architecture or security docs
+- **File Length**: Keep documentation files 200-400 lines max, under 200 is acceptable and split if longer
+- **Accuracy First**: Documentation must accurately reflect current code state
+- **Update Immediately**: Don't defer documentation updates - do them as part of the code change
+
+## Single Source of Truth Principles
+
+**CRITICAL**: Every piece of information must have ONE authoritative source. Duplication leads to inconsistencies and maintenance burden.
+
+### Core Rules
+
+1. **One Topic, One Document**: Each specific topic (e.g., status transitions, initialization process, data structures) should be documented in ONE primary document
+2. **Overview Documents Are Navigation Hubs**: Overview/summary documents should:
+   - Provide high-level context and key concepts
+   - Link to detailed documents instead of summarizing them
+   - Avoid duplicating detailed explanations that exist in specialized documents
+3. **Reference, Don't Repeat**: When information exists in another document:
+   - Use links to reference the authoritative source
+   - Provide only minimal context needed for navigation
+   - Never duplicate detailed explanations, diagrams, or code examples
+4. **Specialized Documents Are Authoritative**: Detailed/specialized documents are the single source of truth for their topics:
+   - Status definitions → Status document
+   - Process flows → Process document
+   - Data structures → Data structures document
+   - Initialization logic → Initialization document
+
+### What NOT to Duplicate
+
+**Never duplicate these across multiple documents:**
+
+- **State machines and diagrams** - Keep in one authoritative document, reference elsewhere
+- **Detailed process steps** - Document once in process doc, overview should only link
+- **Status definitions** - Single source in status document
+- **Calculation logic** - Document once, reference from other docs
+- **Complete code examples** - One authoritative example per concept
+- **Type definitions** - Keep in data model/types document
+
+### Acceptable Duplication
+
+**Minimal duplication is acceptable for:**
+
+- **Brief summaries** - 2-3 bullet points in overview docs (not full explanations)
+- **Quick reference tables** - High-level overview tables (not detailed definitions)
+- **Navigation links** - Cross-references between related documents
+
+### Documentation Structure Pattern
+
+**For feature documentation with multiple files:**
+
+1. **Overview Document** (`*-overview.md` or main `*-feature.md`):
+
+   - Purpose: Navigation hub and quick start
+   - Content: Key concepts, basic flow, links to detailed docs
+   - Avoid: Detailed explanations, full process steps, complete diagrams
+
+2. **Specialized Documents** (`*-process.md`, `*-status.md`, `*-data-structures.md`):
+
+   - Purpose: Single source of truth for specific topic
+   - Content: Complete details, authoritative diagrams, full explanations
+   - Include: All relevant information for the topic
+
+3. **Cross-References**:
+   - Overview → Specialized docs (with context)
+   - Specialized docs → Related specialized docs (for related topics)
+   - Never duplicate content between specialized docs
+
+### When Creating New Documentation
+
+**Before writing, check:**
+
+1. Does this information already exist in another document?
+2. If yes, should I link to it instead of duplicating?
+3. If I need to mention it, can I provide a brief summary with a link?
+4. Is this the authoritative source for this topic, or should it be in a specialized doc?
+
+### When Updating Documentation
+
+**Before adding content, verify:**
+
+1. Is this information already documented elsewhere?
+2. If updating, am I updating the authoritative source?
+3. Are there other documents that reference this information that need updating?
+4. Should I consolidate information into one document instead of spreading it?
+
+### Enforcement
+
+- **Before committing**: Verify no duplication of detailed content
+- **During review**: Check that overview docs link rather than duplicate
+- **If duplication found**: Consolidate into single source, update references
+- **If unsure**: Prefer linking over duplicating
+
+## Documentation Standards and Templates
+
+**This section is the single source of truth for all documentation standards, naming conventions, and templates.**
+
+### File Naming Conventions
+
+**Documentation Files:**
+
+- **Format:** `category-descriptive-name.md`
+- **Category Prefixes:** Use semantic category prefixes for grouping and ordering:
+  - `arch-` - Architecture documentation
+  - `data-` - Data model and type definitions
+  - `fw-` - Framework and technology stack
+  - `api-` - Backend API and endpoints
+  - `feat-` - Feature-specific documentation
+  - `db-` - Database and persistence
+- **Naming:** Use kebab-case (lowercase with hyphens)
+- **Benefits:**
+  - Self-documenting category from filename
+  - Natural grouping by category prefix
+  - No need to renumber when adding files
+  - More flexible and maintainable
+- **Examples:**
+  - `arch-overview.md`
+  - `data-overview.md`, `data-types.md`, `data-reference-data.md`
+  - `fw-backend.md`, `fw-frontend.md`, `fw-utilities.md`
+  - `api-overview.md`, `api-development-rules.md`, `api-response-standardization.md`
+  - `feat-approval-workflow.md`, `feat-approval-workflow-process.md`, `feat-payment-request-business-rules.md`
+  - `db-overview.md`, `db-schemas.md`, `db-operations.md`
+
+**Diagram Files:**
+
+- **Format:** Inline Mermaid diagrams in markdown files using ` ```mermaid ` code blocks
+- **Do NOT use separate `.mmd` files** - all diagrams must be inline in documentation
+- **Location:** Within the relevant documentation file
+
+**Special Files:**
+
+- **README.md:** Always in root and subdirectories
+- **Index files:** Use `README.md` for directory indexes
+
+### Database Naming Conventions
+
+**Data Fields:**
+
+- **Format:** All data fields use snake_case (lowercase with underscores)
+- **Examples:**
+  - `user_id`
+  - `created_at`
+  - `approval_status`
+  - `claim_amount`
+
+**Table Names:**
+
+- **Format:** Table names use prefix convention with `t_` and `m_` prefixes
+- **Prefixes:**
+  - `t_` prefix: Used for transactional tables (tables that store business transactions and operational data)
+  - `m_` prefix: Used for master/reference tables (tables that store reference data, lookup values, or master data)
+- **Examples:**
+  - Transactional tables: `t_claims`, `t_approvals`, `t_sessions`
+  - Master tables: `m_users`, `m_statuses`, `m_categories`
+- **Naming:** Table names after prefix use snake_case
+- **Note:** All table names and field names in database documentation must reflect this convention
+
+### Field Naming in Documentation
+
+**CRITICAL RULE:** All field names referenced in documentation MUST use snake_case (lowercase with underscores), regardless of context.
+
+**Scope:** This rule applies to ALL field names in documentation, including:
+
+- Database field names
+- API request/response field names
+- TypeScript interface/type field names
+- Data model field names
+- Code examples in documentation
+- Mermaid diagrams showing field names
+- Any other field references in documentation
+
+**Examples of Correct Usage:**
+
+- `approver_name` (not `approverName`)
+- `approver_employee_id` (not `approverEmployeeId`)
+- `approved_date` (not `approvedDate`)
+- `is_finance_approval` (not `isFinanceApproval`)
+- `request_type` (not `requestType`)
+- `total_pages` (not `totalPages`)
+- `mime_type` (not `mimeType`)
+- `uploaded_at` (not `uploadedAt`)
+- `is_authenticated` (not `isAuthenticated`)
+- `requestor_name` (not `requestorName`)
+
+**Enforcement:**
+
+- When creating or updating documentation, always use snake_case for field names
+- When reviewing documentation, verify all field names use snake_case
+- This ensures consistency across all documentation and matches database naming conventions
+
+### File Length Guidelines
+
+**Target Length:** 200-400 lines maximum per documentation file (files under 200 lines are acceptable)
+
+**Rationale:**
+
+- Prevents reader overwhelm
+- Easier to navigate and find specific information
+- Better maintainability
+- Faster loading and rendering
+
+**When to Split Files:**
+
+- If a file exceeds 400 lines, split it into multiple focused files
+- Split by topic/subtopic rather than arbitrary length
+- Create a main overview file that links to detailed sub-files
+- Files under 200 lines are fine if content is complete
+- Use numbered prefixes to maintain logical order (e.g., `02-data-model-overview.md`, `02-data-model-types.md`)
+
+**Splitting Strategy:**
+
+1. **Overview File:** Keep high-level overview (100-200 lines)
+2. **Detail Files:** Split specific topics into separate files (200-400 lines each)
+3. **Cross-Reference:** Use clear navigation links between related files
+4. **Table of Contents:** Include TOC in overview file linking to detail files
+
+### Markdown Format Standards
+
+- Use standard Markdown syntax
+- Use Mermaid code blocks for diagrams: ` ```mermaid ... ``` `
+- Use code blocks with language tags for code examples
+- Use proper heading hierarchy (H1 for title, H2 for sections, etc.)
+- Include table of contents for files over 200 lines
+- Use clear section breaks with horizontal rules (`---`)
+
+### Diagram Standards
+
+- All diagrams must be in Mermaid format
+- **All diagrams must be inline** in markdown files using ` ```mermaid ` code blocks (NOT in separate `.mmd` files)
+- Limit diagrams to 1-2 per file to maintain readability
+- Keep diagrams relevant to the content
+
+### Documentation File Template
+
+Use this template structure for all new documentation files:
+
+```markdown
+# Document Title
+
+[Home](../README.md) > [Section Directory](./README.md) > Document Title
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Section 1](#section-1)
+- [Section 2](#section-2)
+- [Related Documentation](#related-documentation)
+
+## Overview
+
+Brief introduction (2-3 paragraphs max). Explain what this document covers and why it's important.
+
+**Key Points:**
+
+- Point 1
+- Point 2
+- Point 3
+
+## Section 1
+
+Content here...
+
+## Section 2
+
+Content here...
+
+---
+
+## Related Documentation
+
+### In This Directory
+
+- [Previous: Previous Document](./01-previous.md)
+- [Next: Next Document](./03-next.md)
+
+### Related Topics
+
+- [Related Topic 1](../other-dir/01-topic.md)
+- [Related Topic 2](../other-dir/02-topic.md)
+
+### See Also
+
+- [Detailed Component Docs](../frontend/components/component.md)
+- [Architecture Overview](../architecture/01-overview.md)
+
+---
+
+**Document Length:** ~350 lines | **Last Updated:** YYYY-MM-DD
+```
+
+### Cross-Referencing and Navigation
+
+**Quick Access Links:**
+Every documentation file should include a "Related Documentation" section at the top or bottom with links to:
+
+- Related files in the same directory
+- Related files in other directories
+- Parent overview files
+- Child detail files (if split)
+
+**Navigation Patterns:**
+
+1. **Breadcrumb Navigation:** Include at top of file
+
+   ```markdown
+   [Home](../README.md) > [Architecture](./README.md) > Component Architecture
+   ```
+
+2. **Previous/Next Links:** At bottom of file for sequential reading
+
+   ```markdown
+   ← [Previous: Architecture Overview](./01-architecture-overview.md)
+   [Next: State Management](./03-state-management.md) →
+   ```
+
+3. **Table of Contents:** For files with multiple sections
+
+   ```markdown
+   ## Table of Contents
+
+   - [Overview](#overview)
+   - [Component Types](#component-types)
+   - [Component Hierarchy](#component-hierarchy)
+   ```
+
+**Cross-Reference Best Practices:**
+
+- Use descriptive link text, not "click here"
+- Link to specific sections using anchors: `[Component Types](./file.md#component-types)`
+- Keep related files close together (same directory when possible)
+- Update links when splitting or moving files
+- Use relative paths (not absolute) for portability
+
+### Directory Creation Rules
+
+1. **Create subdirectories only when needed** - Don't create empty directories
+2. **Use consistent naming** - Follow kebab-case for all directories
+3. **Group related content** - Keep related documentation together
+4. **Use subdirectories for organization** - Use `diagrams/`, `components/`, etc. when grouping similar files
+5. **Maintain README.md** - Each major subdirectory should have a README explaining its contents
+6. **Temp files go in `@docs/temp/`** - All temporary documentation must be placed in `@docs/temp/` only
+7. **Keep temp flat** - No subdirectories in `/temp`, use descriptive filenames instead
+
+### Maintenance Guidelines
+
+1. **Keep structure consistent** - Follow standards in this file for all new documentation
+2. **Update `README.md`** - When adding new directory types, update the directory structure section
+3. **Cross-reference** - Link related documentation across directories
+4. **Regular review** - Periodically review and reorganize if needed
+5. **Documentation index** - Maintain a clear index in root README.md
+6. **Monitor file length** - Split files that exceed 400 lines
+7. **Update navigation** - When splitting files, update all cross-references
+8. **Test links** - Verify all internal links work after changes
+9. **Clean up temp files** - Periodically review `/temp` directory and remove outdated files
+10. **Never link to temp** - Do not create links from permanent documentation to temp files

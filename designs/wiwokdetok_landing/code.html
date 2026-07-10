@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WIWOKDETOK Command Center (Light)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10B981",
+                        "primary-dark": "#059669",
+                        "background-main": "#FFFFFF",
+                        "slate-950": "#020617",
+                        "warning": "#F59E0B",
+                        "danger": "#FA5538"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "geist": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            h1 {
+                font-family: 'Inter', sans-serif;
+                font-weight: 900;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background-main text-slate-900 font-display min-h-screen flex flex-col antialiased selection:bg-primary selection:text-white">
+<div class="relative flex h-full w-full flex-col overflow-x-hidden">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200 bg-white px-10 py-4 sticky top-0 z-50">
+<div class="flex items-center gap-4 text-slate-900">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight">WIWOKDETOK</h2>
+</div>
+<nav class="hidden md:flex flex-1 justify-center gap-8">
+<a class="text-primary text-sm font-bold leading-normal border-b-2 border-primary pb-0.5" href="#">Command Center</a>
+<a class="text-slate-600 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">The Talk Ledger</a>
+<a class="text-slate-600 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Bang Jaga AI</a>
+<a class="text-slate-600 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Walk-o-Meter</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center gap-2 mr-4 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-200 cursor-pointer hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined text-xs text-slate-500">eco</span>
+<span class="text-xs font-medium text-slate-500">Data-Saver</span>
+<div class="w-8 h-4 bg-slate-200 rounded-full relative">
+<div class="w-4 h-4 bg-white rounded-full absolute left-0 shadow-sm transform transition-transform duration-200"></div>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-transparent hover:bg-slate-50 text-slate-900 text-sm font-bold border border-slate-200 transition-colors">
+<span class="truncate">Log In</span>
+</button>
+<button class="flex items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary hover:bg-primary-dark text-white text-sm font-bold shadow-sm transition-colors">
+<span class="truncate">Sign Up</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 w-full max-w-[1440px] mx-auto p-6 md:p-8 lg:p-10 flex flex-col gap-8">
+<div class="flex flex-col gap-8">
+<div class="flex flex-col md:flex-row justify-between items-start gap-6">
+<div class="text-center md:text-left space-y-4 max-w-4xl">
+<h1 class="text-5xl md:text-7xl font-black tracking-tighter text-slate-900 leading-[0.9]">
+                        Ubah Janji <span class="text-primary">Jadi Aksi.</span>
+</h1>
+<p class="text-lg md:text-xl text-slate-500 max-w-2xl font-normal">
+                        Tracking political promises against environmental realities. See the gap between what is said and what is done in real-time.
+                    </p>
+</div>
+<div class="bg-blue-50 border border-blue-100 rounded-[12px] p-4 flex items-start gap-4 max-w-md w-full md:w-auto self-end">
+<div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-blue-600 text-2xl">robot_2</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-blue-900">Bang Jaga Says:</h4>
+<p class="text-xs text-blue-700 mt-1">"Welcome to the Command Center. Data looks clear today, but keep an eye on the industrial sector gaps."</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-0 overflow-hidden rounded-xl border border-slate-200 h-[400px] shadow-sm">
+<div class="relative bg-slate-50 flex flex-col justify-center p-12 md:p-16 border-b md:border-b-0 md:border-r border-slate-200 group">
+<div class="absolute top-6 left-6 flex items-center gap-2">
+<div class="bg-primary/10 text-primary p-1.5 rounded-md">
+<span class="material-symbols-outlined text-xl">format_quote</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest text-slate-500">The Talk</span>
+</div>
+<blockquote class="text-2xl md:text-3xl font-bold text-slate-800 leading-tight">
+                        "We will reduce carbon emissions by 40% in the industrial sector by the end of 2024."
+                    </blockquote>
+<div class="mt-6 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-300 bg-cover bg-center border border-white" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCkLDaTw4oEIwr1er4hZhOmyJ6gD3djzDfTAeG4XLh9Gi9mpw4-Y6f2DEActCvGJPB_f9JycadzSNZ7Oaqb4X7LtJnav9LvL6NVMvqD06wh5Vb_yqxex3mqNiWJUAzrB0C0oWr_RLMmjI5dpO95E9oWx7XBLmSVMbpsw7VuUHJBOl2kUNuaoH28RvHRLnVi_2SnKS84MATozMGtx_Fq2sn9DWsX6HzMUDxmDepAivmcDJXdCpIM7Om_7I5hEjueQU1vRVJqFHG1L8A')"></div>
+<div>
+<p class="text-sm font-bold text-slate-900">Minister Haryanto</p>
+<p class="text-xs text-slate-500">October 12, 2023</p>
+</div>
+</div>
+</div>
+<div class="relative bg-cover bg-center group overflow-hidden" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCX7ro5bIgxRfu_KbOGTGQvRLEq7_Its5B1OcDNQbh-ChmZC3cbBClRdGn4f-cAGdmze9a4GYX3xipNwRXz5aO8Obsl5qoUg6JfhOoJ3iFCw5vbrgW6Zr5bK2PWgEnZ2sZ4dXvVGHeE5s-PjJIklkoXm9TJOSkhjwXzMumYlbBbSUlE8NRzEUaMTEmSHJHEeWMQDD9Wt-rx5lRyUKvSJM1uypXX4xqOTeKG4MZloV_Zaei0btkR1JRgn8gN_hkvy6m4dB0anefppGE')">
+<div class="absolute inset-0 bg-white/10 group-hover:bg-transparent transition-all duration-500"></div>
+<div class="absolute top-6 left-6 flex items-center gap-2 z-10">
+<div class="bg-danger/90 text-white p-1.5 rounded-md">
+<span class="material-symbols-outlined text-xl">warning</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest text-white drop-shadow-lg">The Walk</span>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent">
+<div class="flex items-end justify-between">
+<div>
+<p class="text-danger font-bold text-lg mb-1 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-danger animate-pulse"></span>
+                                    Critical Alert
+                                </p>
+<h3 class="text-white text-2xl font-bold">Industrial Emissions +15%</h3>
+<p class="text-slate-200 text-sm mt-2 max-w-md font-medium">Satellite data confirms increase in PM2.5 levels across 3 major industrial zones.</p>
+</div>
+<button class="bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm">
+                                Verify Data
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<div class="lg:col-span-8 flex flex-col gap-6">
+<label class="relative group w-full">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full h-14 pl-12 pr-4 bg-white border border-slate-200 rounded-xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm" placeholder="Search Regions, Politicians, or specific Promises..." type="text"/>
+<div class="absolute inset-y-0 right-2 flex items-center">
+<button class="p-2 text-slate-400 hover:text-slate-600 transition-colors">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</div>
+</label>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-white p-5 rounded-[12px] border border-slate-200 shadow-sm flex flex-col justify-between h-32 hover:border-primary/50 transition-colors group">
+<p class="text-slate-500 text-xs font-semibold uppercase tracking-wider group-hover:text-primary transition-colors">Commitments</p>
+<div>
+<p class="text-3xl font-black text-slate-900">1,240</p>
+<span class="inline-flex items-center gap-1 text-xs font-medium text-primary bg-primary/10 px-1.5 py-0.5 rounded mt-1">
+<span class="material-symbols-outlined text-[10px]">arrow_upward</span> 12%
+                            </span>
+</div>
+</div>
+<div class="bg-white p-5 rounded-[12px] border border-slate-200 shadow-sm flex flex-col justify-between h-32 hover:border-primary/50 transition-colors group">
+<p class="text-slate-500 text-xs font-semibold uppercase tracking-wider group-hover:text-primary transition-colors">Kept</p>
+<div>
+<p class="text-3xl font-black text-slate-900">450</p>
+<span class="inline-flex items-center gap-1 text-xs font-medium text-primary bg-primary/10 px-1.5 py-0.5 rounded mt-1">
+<span class="material-symbols-outlined text-[10px]">arrow_upward</span> 5%
+                            </span>
+</div>
+</div>
+<div class="bg-white p-5 rounded-[12px] border border-slate-200 shadow-sm flex flex-col justify-between h-32 hover:border-danger/50 transition-colors relative overflow-hidden group">
+<div class="absolute right-0 top-0 p-2 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-danger">gate</span>
+</div>
+<p class="text-slate-500 text-xs font-semibold uppercase tracking-wider group-hover:text-danger transition-colors">Action Gap</p>
+<div>
+<p class="text-3xl font-black text-slate-900">64%</p>
+<span class="inline-flex items-center gap-1 text-xs font-medium text-danger bg-danger/10 px-1.5 py-0.5 rounded mt-1">
+<span class="material-symbols-outlined text-[10px]">arrow_downward</span> 2%
+                            </span>
+</div>
+</div>
+<div class="bg-white p-5 rounded-[12px] border border-slate-200 shadow-sm flex flex-col justify-between h-32 hover:border-warning/50 transition-colors group">
+<p class="text-slate-500 text-xs font-semibold uppercase tracking-wider group-hover:text-warning transition-colors">Trust Score</p>
+<div>
+<p class="text-3xl font-black text-slate-900">Low</p>
+<span class="inline-flex items-center gap-1 text-xs font-medium text-warning bg-warning/10 px-1.5 py-0.5 rounded mt-1">
+<span class="material-symbols-outlined text-[10px]">trending_flat</span> Stable
+                            </span>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-[12px] border border-slate-200 shadow-sm overflow-hidden flex-1">
+<div class="px-6 py-4 border-b border-slate-200 flex justify-between items-center bg-slate-50/50">
+<h3 class="font-bold text-slate-900">Live Ledger Feed</h3>
+<button class="text-xs text-primary font-bold hover:underline flex items-center gap-1">View All <span class="material-symbols-outlined text-[14px]">arrow_forward</span></button>
+</div>
+<div class="divide-y divide-slate-100">
+<div class="p-4 hover:bg-slate-50 transition-colors flex gap-4 items-start cursor-pointer">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="text-sm font-bold text-slate-900 hover:text-primary transition-colors">Reforestation Project Alpha</h4>
+<span class="text-[10px] text-slate-400 font-medium whitespace-nowrap ml-2">2m ago</span>
+</div>
+<p class="text-xs text-slate-500 mt-1">Completed 80% of planting goal in Kalimantan region.</p>
+</div>
+</div>
+<div class="p-4 hover:bg-slate-50 transition-colors flex gap-4 items-start cursor-pointer">
+<div class="w-10 h-10 rounded-lg bg-danger/10 flex items-center justify-center shrink-0 text-danger">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="text-sm font-bold text-slate-900 hover:text-danger transition-colors">Waste Management Fail</h4>
+<span class="text-[10px] text-slate-400 font-medium whitespace-nowrap ml-2">15m ago</span>
+</div>
+<p class="text-xs text-slate-500 mt-1">Deadline missed for new recycling facility in West Java.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col gap-6">
+<div class="bg-white rounded-[12px] border border-slate-200 shadow-sm p-5 flex flex-col gap-3">
+<h3 class="font-bold text-slate-900 text-sm uppercase tracking-wider">Quick Nav</h3>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex flex-col items-center justify-center gap-2 p-4 rounded-xl border border-slate-200 hover:border-primary hover:bg-primary/5 transition-all text-slate-700 hover:text-primary group">
+<span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">smart_toy</span>
+<span class="text-xs font-bold">Bang Jaga AI</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 rounded-xl border border-slate-200 hover:border-primary hover:bg-primary/5 transition-all text-slate-700 hover:text-primary group">
+<span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">speed</span>
+<span class="text-xs font-bold">Walk-o-Meter</span>
+</button>
+</div>
+</div>
+<div class="bg-white rounded-[12px] border border-slate-200 shadow-sm p-6 flex flex-col flex-1">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-bold text-lg text-slate-900">Trending Gaps</h3>
+<button class="p-1 rounded hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-slate-400">more_horiz</span>
+</button>
+</div>
+<div class="space-y-6 flex-1">
+<div class="flex flex-col gap-2 group cursor-pointer">
+<div class="flex justify-between text-sm">
+<span class="font-medium text-slate-700 group-hover:text-slate-900 transition-colors">Clean Water Act</span>
+<span class="font-bold text-danger bg-danger/10 px-2 py-0.5 rounded text-xs">-45% Gap</span>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+<div class="bg-danger h-2 rounded-full transition-all duration-1000" style="width: 30%"></div>
+</div>
+<div class="flex justify-between text-xs text-slate-400">
+<span>Promised: 100%</span>
+<span>Actual: 30%</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 group cursor-pointer">
+<div class="flex justify-between text-sm">
+<span class="font-medium text-slate-700 group-hover:text-slate-900 transition-colors">EV Adoption</span>
+<span class="font-bold text-warning bg-warning/10 px-2 py-0.5 rounded text-xs">-12% Gap</span>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+<div class="bg-warning h-2 rounded-full transition-all duration-1000" style="width: 68%"></div>
+</div>
+<div class="flex justify-between text-xs text-slate-400">
+<span>Promised: 80%</span>
+<span>Actual: 68%</span>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-slate-100">
+<h4 class="text-sm font-bold text-slate-900 mb-4 flex items-center justify-between">
+<span>Map View</span>
+<span class="material-symbols-outlined text-sm text-slate-400">open_in_full</span>
+</h4>
+<div class="aspect-[4/3] w-full rounded-[12px] bg-slate-100 relative overflow-hidden group cursor-pointer border border-slate-200">
+<img alt="Map view" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvd_9URZckext5sdnyWKMHZ7j5vs6b9fXzg_oXOea7SgWtaKe9LtZl_jIEL7YBTkv0dH2nvX3gE8zmxl5KtiS0unHdpNpZglaUGIQUI62hK4Vdq8gKrwCPgG-5s8rhQ337bW4pyfIyEP5EpwFV8fXSqow9iU5hUPuCxCgPC91zqJxbLpqXkiM-kXgZUbflpp0vhR4LJ7VWlqJlS-JXxWVpHr4C4dmmwf3AltM4rbPs6JnKUU7U_fYLfFSUGymWpO4prpUJgYIZ1PY"/>
+<div class="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<button class="bg-primary/90 hover:bg-primary backdrop-blur-sm text-white px-4 py-2 rounded-lg text-sm font-bold shadow-lg transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">map</span> Open Map
+                                </button>
+</div>
+<div class="absolute top-1/4 left-1/4 w-3 h-3 bg-primary border-2 border-white rounded-full shadow-lg animate-pulse"></div>
+<div class="absolute bottom-1/3 right-1/4 w-3 h-3 bg-danger border-2 border-white rounded-full shadow-lg animate-pulse"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

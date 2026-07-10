@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Talk Ledger</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "trust-green": "#10B981",
+                        "trust-green-dark": "#059669",
+                        "warning-orange": "#F59E0B",
+                        "danger": "#FA5538",
+                        "background-main": "#FFFFFF",
+                        "slate-950": "#020617",
+                    },
+                    fontFamily: {
+                        "body": ["Inter", "sans-serif"],
+                        "geist": ["Geist", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            h1, h2, h3, h4, h5, h6 {
+                font-family: 'Geist', sans-serif;
+            }
+        }
+        .walk-o-meter-circle {
+            stroke-dasharray: 283;
+            stroke-dashoffset: 283;
+            transition: stroke-dashoffset 1s ease-in-out;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-body min-h-screen flex flex-col antialiased selection:bg-trust-green selection:text-white">
+<div class="relative flex h-full w-full flex-col overflow-x-hidden">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200 bg-white/95 backdrop-blur-md px-6 py-3 sticky top-0 z-50 shadow-sm">
+<div class="flex items-center gap-3 text-slate-900">
+<div class="size-7 text-trust-green">
+<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-tight font-geist text-slate-800">The Talk Ledger</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center gap-2 bg-slate-50 px-2.5 py-1 rounded-full border border-slate-200 cursor-pointer hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined text-[14px] text-slate-500">speed</span>
+<span class="text-[10px] font-bold text-slate-600 uppercase tracking-wide">Hemat Data</span>
+<div class="w-6 h-3 bg-trust-green rounded-full relative ml-1">
+<div class="w-3 h-3 bg-white rounded-full absolute right-0 shadow-sm transform transition-transform duration-200"></div>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-transparent hover:bg-slate-50 text-slate-900 text-sm font-bold border border-slate-200 transition-colors">
+<span class="truncate">Log In</span>
+</button>
+</div>
+</div>
+</header>
+<div class="bg-white border-b border-slate-200 sticky top-[57px] z-40 shadow-sm">
+<div class="w-full max-w-[800px] mx-auto px-4 py-3 flex flex-col gap-3">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl pl-10 pr-4 py-2.5 focus:ring-2 focus:ring-trust-green/20 focus:border-trust-green outline-none transition-all placeholder:text-slate-400" placeholder="Search promises, politicians, or topics..." type="text"/>
+</div>
+<div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide">
+<div class="flex items-center bg-slate-50 border border-slate-200 rounded-lg px-2 py-1.5 shrink-0 hover:bg-slate-100 cursor-pointer transition-colors">
+<span class="text-xs font-semibold text-slate-700">Region</span>
+<span class="material-symbols-outlined text-[16px] text-slate-400 ml-1">arrow_drop_down</span>
+</div>
+<div class="flex items-center bg-slate-50 border border-slate-200 rounded-lg px-2 py-1.5 shrink-0 hover:bg-slate-100 cursor-pointer transition-colors">
+<span class="text-xs font-semibold text-slate-700">Politician Name</span>
+<span class="material-symbols-outlined text-[16px] text-slate-400 ml-1">arrow_drop_down</span>
+</div>
+<div class="flex items-center bg-slate-50 border border-slate-200 rounded-lg px-2 py-1.5 shrink-0 hover:bg-slate-100 cursor-pointer transition-colors">
+<span class="text-xs font-semibold text-slate-700">Year</span>
+<span class="material-symbols-outlined text-[16px] text-slate-400 ml-1">arrow_drop_down</span>
+</div>
+<div class="flex items-center bg-slate-50 border border-slate-200 rounded-lg px-2 py-1.5 shrink-0 hover:bg-slate-100 cursor-pointer transition-colors">
+<span class="text-xs font-semibold text-slate-700">Status</span>
+<span class="material-symbols-outlined text-[16px] text-slate-400 ml-1">arrow_drop_down</span>
+</div>
+<div class="flex-1"></div>
+<button class="flex items-center gap-1 bg-slate-900 text-white px-3 py-1.5 rounded-lg shrink-0 hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-[14px]">tune</span>
+<span class="text-xs font-semibold">More Filters</span>
+</button>
+</div>
+</div>
+</div>
+<main class="flex-1 w-full max-w-[800px] mx-auto py-6 px-4 flex flex-col gap-6">
+<article class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
+<div class="px-5 pt-5 pb-3 flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden border border-slate-100">
+<img alt="Minister" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALKHKvVK7CE05bBQUIDKSoPTkXhpXezaI9KHZnJBzEQ15_7kbLvWPlSiclNJ-fdg-v6zWRGEUTvhlsXN52j6M5U54R-U-owasHTeLzOkdAbNFaCn7LLnvol7bZoDMJIMpAVcUaIk-nhObNm21q_ld42D_d_CDk2d2uxZ8OOHZs5EI1LyO6APXwj7IPQlx6Osyg3Zm6iRn8MHEN0yR8BzNQkK50RkwACBQbwOtRfefq3Eh2lEVa1qrsqSbkJs0SLh1o49ZllibqQ_g"/>
+</div>
+<div>
+<div class="flex items-center gap-1">
+<h3 class="font-bold text-slate-900 text-[15px]">Minister Haryanto</h3>
+<span class="material-symbols-outlined text-[14px] text-trust-green">check_circle</span>
+</div>
+<div class="flex items-center gap-1 text-[13px] text-slate-500">
+<span>@min_haryanto</span>
+<span>·</span>
+<span>2h</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center w-8 h-8 rounded-full bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 transition-colors" title="Subscribe to alerts">
+<span class="material-symbols-outlined text-[18px]">notifications</span>
+</button>
+<span class="inline-flex items-center gap-1.5 bg-blue-50 text-blue-700 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-200 uppercase tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
+                            New Promise
+                        </span>
+</div>
+</div>
+</div>
+<div class="px-5 pb-4">
+<p class="text-[22px] font-geist font-bold text-slate-900 leading-[1.3] mb-4">
+                    "We are committing to reduce carbon emissions by <span class="text-trust-green bg-trust-green/10 px-1 rounded">40% in the industrial sector</span> by the end of 2024 to combat the worsening air quality in our major cities."
+                </p>
+<div class="flex items-center gap-2 mb-5">
+<a class="inline-flex items-center gap-1.5 text-[12px] font-semibold text-slate-700 hover:text-slate-900 bg-slate-50 px-2.5 py-1.5 rounded-lg border border-slate-200 transition-colors" href="#">
+<div class="w-4 h-4 rounded bg-slate-800 flex items-center justify-center text-white text-[8px] font-bold">DW</div>
+                        Source: Daily Webcrawl
+                        <span class="material-symbols-outlined text-[14px] text-slate-400">open_in_new</span>
+</a>
+</div>
+<div class="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-xl p-4 shadow-sm mb-4 relative overflow-hidden">
+<div class="absolute -right-4 -bottom-4 opacity-5">
+<span class="material-symbols-outlined text-[80px]">speed</span>
+</div>
+<div class="flex-1 z-10">
+<h4 class="text-[11px] font-bold uppercase tracking-widest text-slate-500 mb-1">Walk-o-Meter Status</h4>
+<p class="text-lg font-bold text-warning-orange mb-1">All Talk, No Action.</p>
+<p class="text-[13px] text-slate-700">Zero progress recorded since announcement.</p>
+</div>
+<div class="relative w-20 h-20 flex items-center justify-center shrink-0 z-10 bg-white rounded-full p-1 shadow-sm border border-slate-200">
+<svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+<circle class="text-slate-100 stroke-current" cx="50" cy="50" fill="transparent" r="45" stroke-width="8"></circle>
+<circle class="text-warning-orange stroke-current" cx="50" cy="50" fill="transparent" r="45" stroke-dasharray="283" stroke-dashoffset="283" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute flex flex-col items-center justify-center">
+<span class="text-xl font-black text-warning-orange">0%</span>
+</div>
+</div>
+</div>
+<div class="bg-indigo-50/50 rounded-xl border border-indigo-100 overflow-hidden">
+<div class="flex items-center justify-between p-3 bg-indigo-50/80 border-b border-indigo-100/50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-indigo-500 text-[18px]">smart_toy</span>
+<span class="text-[13px] font-bold text-indigo-900">AI Summary Breakdown</span>
+</div>
+<div class="flex gap-1">
+<div class="w-1 h-1 rounded-full bg-indigo-400"></div>
+<div class="w-1 h-1 rounded-full bg-indigo-300"></div>
+<div class="w-1 h-1 rounded-full bg-indigo-200"></div>
+</div>
+</div>
+<div class="p-4">
+<ul class="space-y-3 text-[13px] text-slate-700">
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-indigo-400 text-[16px] mt-0.5 shrink-0">target</span>
+<div>
+<strong class="font-bold text-slate-900 block mb-0.5">What was promised:</strong>
+<span>40% reduction in industrial carbon emissions across major cities.</span>
+</div>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-indigo-400 text-[16px] mt-0.5 shrink-0">calendar_month</span>
+<div>
+<strong class="font-bold text-slate-900 block mb-0.5">When:</strong>
+<span>By the end of 2024.</span>
+</div>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-indigo-400 text-[16px] mt-0.5 shrink-0">payments</span>
+<div>
+<strong class="font-bold text-slate-900 block mb-0.5">The Budget:</strong>
+<span class="text-slate-600 italic bg-white px-1.5 py-0.5 rounded border border-slate-100 text-[12px]">Not specified in the speech or official documents.</span>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="bg-slate-50 border-t border-slate-100 px-5 py-4 flex gap-3">
+<img alt="Bang Jaga" class="w-9 h-9 rounded-full border-2 border-white shadow-sm mt-0.5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-_y1kVYEUuRm5H1tOA8CyPVW3I-_IeLyGiJyR33rVDLVpL_VQuyB8qWsmthVQDAqu7blCFdYA5Kjfg4ZJs11OhCelOgzK9lsjyGFbuI0d_-d95n0FdLsBsM8JW1-oduQHVF6UsdW_gv12ECOdwJzf-cL5cKJNTYXkc_g2IIYhij7wa5HAgru3nf2ZnJ-o6_aO4v0UkFtzBHNiYyC6yabWosMPS-Pqe566imyqMWGhEKrIfz00Gv_1v5W5Y9xNSGjvF0RQZ1j69Rs"/>
+<div class="flex-1">
+<div class="flex items-center gap-1.5 mb-1">
+<span class="font-bold text-[14px] text-slate-900">Bang Jaga</span>
+<span class="material-symbols-outlined text-blue-500 text-[16px]">verified</span>
+<span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest bg-slate-200/80 px-1.5 py-0.5 rounded-sm">Watchdog</span>
+</div>
+<p class="text-[14px] text-slate-800 leading-snug">
+                        "Another 'by the end of the year' promise with zero budget attached. Let's see if the industrial sector even got the memo. 🐀🕵️‍♂️"
+                    </p>
+</div>
+</div>
+<div class="px-5 py-3 border-t border-slate-100 flex items-center justify-between text-slate-600 bg-white">
+<button class="flex items-center gap-1.5 hover:text-trust-green hover:bg-trust-green/5 px-2 py-1.5 rounded-lg transition-colors group">
+<span class="material-symbols-outlined text-[20px] group-hover:fill-current">thumb_up</span>
+<span class="text-[13px] font-bold">1.2k</span>
+</button>
+<button class="flex items-center gap-1.5 hover:text-blue-500 hover:bg-blue-50 px-2 py-1.5 rounded-lg transition-colors group">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+<span class="text-[13px] font-bold">148</span>
+</button>
+<button class="flex items-center gap-1.5 hover:text-emerald-500 hover:bg-emerald-50 px-2 py-1.5 rounded-lg transition-colors group">
+<span class="material-symbols-outlined text-[20px]">share</span>
+<span class="text-[13px] font-bold">Share</span>
+</button>
+<button class="flex items-center gap-1.5 text-slate-500 hover:text-danger hover:bg-danger/10 px-3 py-1.5 rounded-lg transition-colors font-bold">
+<span class="material-symbols-outlined text-[18px]">flag</span>
+<span class="text-[12px]">Flag as BS</span>
+</button>
+</div>
+</article>
+<article class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
+<div class="px-5 pt-5 pb-3 flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden border border-slate-100">
+<img alt="Governor" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6-ZSQJFFXdVukGQX7JgSNsaj64dIEFnmrPvf7pfKXiHEsTDm0uJYMlpkn2c8t_o6Gcdqo4rVfEpSDbamas5bY9bPF787OymRNooDDZvxfegA71rAwviklYXMKc5YHe7zWNCVjhrzD9TQ2JF0xxj6jH_9QgY5fYZo1F6rYxEesQ85IKCNOHi0vn_3rdXrU8lM22o1UMk8av3BabLGgGlZvZ6YqDKeYVZcf4PepY_jX51VPt62LpihvY3AM8H5k6U8KdamE1x71oSc"/>
+</div>
+<div>
+<div class="flex items-center gap-1">
+<h3 class="font-bold text-slate-900 text-[15px]">Gov. Setiawan</h3>
+<span class="material-symbols-outlined text-[14px] text-trust-green">check_circle</span>
+</div>
+<div class="flex items-center gap-1 text-[13px] text-slate-500">
+<span>@gov_setiawan</span>
+<span>·</span>
+<span>Oct 12</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center w-8 h-8 rounded-full bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 transition-colors" title="Subscribe to alerts">
+<span class="material-symbols-outlined text-[18px]">notifications</span>
+</button>
+<span class="inline-flex items-center gap-1.5 bg-amber-50 text-amber-700 text-[11px] font-bold px-2.5 py-1 rounded-full border border-amber-200 uppercase tracking-wide">
+<span class="material-symbols-outlined text-[14px]">update</span>
+                            Progress Update
+                        </span>
+</div>
+</div>
+</div>
+<div class="px-5 pb-4">
+<p class="text-[22px] font-geist font-bold text-slate-900 leading-[1.3] mb-4">
+                    "We will plant <span class="text-trust-green bg-trust-green/10 px-1 rounded">2 million mangroves</span> along the northern coast to prevent abrasion and restore local ecosystems."
+                </p>
+<div class="flex items-center gap-2 mb-5">
+<a class="inline-flex items-center gap-1.5 text-[12px] font-semibold text-slate-700 hover:text-slate-900 bg-slate-50 px-2.5 py-1.5 rounded-lg border border-slate-200 transition-colors" href="#">
+<div class="w-4 h-4 rounded bg-blue-600 flex items-center justify-center text-white text-[8px] font-bold">LN</div>
+                        Source: Local News Portal
+                        <span class="material-symbols-outlined text-[14px] text-slate-400">open_in_new</span>
+</a>
+</div>
+<div class="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-xl p-4 shadow-sm mb-4 relative overflow-hidden">
+<div class="absolute -right-4 -bottom-4 opacity-5">
+<span class="material-symbols-outlined text-[80px]">forest</span>
+</div>
+<div class="flex-1 z-10 pr-4">
+<h4 class="text-[11px] font-bold uppercase tracking-widest text-slate-500 mb-1">Walk-o-Meter Status</h4>
+<p class="text-lg font-bold text-trust-green mb-1">Making moves.</p>
+<p class="text-[13px] text-slate-700">800k / 2M mangroves officially planted so far.</p>
+</div>
+<div class="relative w-20 h-20 flex items-center justify-center shrink-0 z-10 bg-white rounded-full p-1 shadow-sm border border-slate-200">
+<svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+<circle class="text-slate-100 stroke-current" cx="50" cy="50" fill="transparent" r="45" stroke-width="8"></circle>
+<circle class="text-trust-green stroke-current" cx="50" cy="50" fill="transparent" r="45" stroke-dasharray="283" stroke-dashoffset="170" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute flex flex-col items-center justify-center">
+<span class="text-xl font-black text-slate-900">40%</span>
+</div>
+</div>
+</div>
+<div class="bg-indigo-50/50 rounded-xl border border-indigo-100 overflow-hidden">
+<div class="flex items-center justify-between p-3 bg-indigo-50/80 border-b border-indigo-100/50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-indigo-500 text-[18px]">smart_toy</span>
+<span class="text-[13px] font-bold text-indigo-900">AI Summary Breakdown</span>
+</div>
+<div class="flex gap-1">
+<div class="w-1 h-1 rounded-full bg-indigo-400"></div>
+<div class="w-1 h-1 rounded-full bg-indigo-300"></div>
+<div class="w-1 h-1 rounded-full bg-indigo-200"></div>
+</div>
+</div>
+<div class="p-4">
+<ul class="space-y-3 text-[13px] text-slate-700">
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-indigo-400 text-[16px] mt-0.5 shrink-0">target</span>
+<div>
+<strong class="font-bold text-slate-900 block mb-0.5">What was promised:</strong>
+<span>Planting 2 million mangroves on the northern coast for ecological restoration.</span>
+</div>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-indigo-400 text-[16px] mt-0.5 shrink-0">calendar_month</span>
+<div>
+<strong class="font-bold text-slate-900 block mb-0.5">When:</strong>
+<span>Ongoing multi-year project (Started 2023).</span>
+</div>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-indigo-400 text-[16px] mt-0.5 shrink-0">payments</span>
+<div>
+<strong class="font-bold text-slate-900 block mb-0.5">The Budget:</strong>
+<span class="text-slate-800 bg-white px-1.5 py-0.5 rounded border border-slate-100 text-[12px] font-medium">Rp 15 Billion allocated from regional budget.</span>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="bg-slate-50 border-t border-slate-100 px-5 py-4 flex gap-3">
+<img alt="Bang Jaga" class="w-9 h-9 rounded-full border-2 border-white shadow-sm mt-0.5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-_y1kVYEUuRm5H1tOA8CyPVW3I-_IeLyGiJyR33rVDLVpL_VQuyB8qWsmthVQDAqu7blCFdYA5Kjfg4ZJs11OhCelOgzK9lsjyGFbuI0d_-d95n0FdLsBsM8JW1-oduQHVF6UsdW_gv12ECOdwJzf-cL5cKJNTYXkc_g2IIYhij7wa5HAgru3nf2ZnJ-o6_aO4v0UkFtzBHNiYyC6yabWosMPS-Pqe566imyqMWGhEKrIfz00Gv_1v5W5Y9xNSGjvF0RQZ1j69Rs"/>
+<div class="flex-1">
+<div class="flex items-center gap-1.5 mb-1">
+<span class="font-bold text-[14px] text-slate-900">Bang Jaga</span>
+<span class="material-symbols-outlined text-blue-500 text-[16px]">verified</span>
+<span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest bg-slate-200/80 px-1.5 py-0.5 rounded-sm">Watchdog</span>
+</div>
+<p class="text-[14px] text-slate-800 leading-snug">
+                        "40% is better than zero, but word on the coast is some of these are just saplings washing away. We're keeping an eye on the survival rate. 🌊👀"
+                    </p>
+</div>
+</div>
+<div class="px-5 py-3 border-t border-slate-100 flex items-center justify-between text-slate-600 bg-white">
+<button class="flex items-center gap-1.5 hover:text-trust-green hover:bg-trust-green/5 px-2 py-1.5 rounded-lg transition-colors group">
+<span class="material-symbols-outlined text-[20px] group-hover:fill-current">thumb_up</span>
+<span class="text-[13px] font-bold">8.4k</span>
+</button>
+<button class="flex items-center gap-1.5 hover:text-blue-500 hover:bg-blue-50 px-2 py-1.5 rounded-lg transition-colors group">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+<span class="text-[13px] font-bold">432</span>
+</button>
+<button class="flex items-center gap-1.5 hover:text-emerald-500 hover:bg-emerald-50 px-2 py-1.5 rounded-lg transition-colors group">
+<span class="material-symbols-outlined text-[20px]">share</span>
+<span class="text-[13px] font-bold">Share</span>
+</button>
+<button class="flex items-center gap-1.5 text-slate-500 hover:text-danger hover:bg-danger/10 px-3 py-1.5 rounded-lg transition-colors font-bold">
+<span class="material-symbols-outlined text-[18px]">flag</span>
+<span class="text-[12px]">Flag as BS</span>
+</button>
+</div>
+</article>
+<div class="flex justify-center mt-2 mb-8">
+<button class="bg-white border border-slate-200 text-slate-800 hover:text-trust-green hover:border-trust-green/50 px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-sm flex items-center gap-2">
+                Show more
+            </button>
+</div>
+</main>
+</div>
+</body></html>

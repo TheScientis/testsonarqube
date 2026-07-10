@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WIWOKDETOK - User Profile &amp; Settings</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10B981",
+                        "primary-dark": "#059669",
+                        "background-main": "#F8FAFC",
+                        "slate-950": "#020617",
+                        "warning": "#F59E0B",
+                        "danger": "#FA5538"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "geist": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "2xl": "12px",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            h1 { font-family: 'Inter', sans-serif; font-weight: 900; }
+        }.custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9; 
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+    </style>
+</head>
+<body class="bg-background-main text-slate-900 font-display min-h-screen flex flex-col antialiased selection:bg-primary selection:text-white">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200 bg-white px-10 py-4 sticky top-0 z-50 shadow-sm">
+<div class="flex items-center gap-4 text-slate-900">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight">WIWOKDETOK</h2>
+</div>
+<nav class="hidden md:flex flex-1 justify-center gap-8">
+<a class="text-slate-600 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Command Center</a>
+<a class="text-slate-600 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">The Talk Ledger</a>
+<a class="text-slate-600 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Bang Jaga AI</a>
+<a class="text-primary text-sm font-bold leading-normal border-b-2 border-primary pb-0.5" href="#">Profile &amp; Settings</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center gap-2 mr-4 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-200 cursor-pointer hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined text-xs text-slate-500">eco</span>
+<span class="text-xs font-medium text-slate-500">Data-Saver</span>
+<div class="w-8 h-4 bg-slate-200 rounded-full relative">
+<div class="w-4 h-4 bg-white rounded-full absolute left-0 shadow-sm transform transition-transform duration-200"></div>
+</div>
+</div>
+<div class="flex gap-2 items-center">
+<button class="w-10 h-10 rounded-full border border-slate-200 bg-white overflow-hidden focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all">
+<img alt="User Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4ktcXSyNuSwE8Tb5oHBcl9jgwEFAMKjtDPyb4sm8dSMNBFa9ruXDOmZi6L_p8kbLHRnDyqlHfuFbhAw-bXB_LfW2eXWH31gQ22X1O5q7SN4sGJO8uJogpnlEu_JoaNkzU73hdHfBfpfA2Bm0nZMf3RvC_mgvmFK7s2IzX5mYGR548Z6DzPHHYJSWQnqzm-iNf_vOGAx7TRAwj3Of2Y5SdSMmVKFDPUgvrJcyz-HegkpUQM-A5nWN9bqu6VDWjHW5NsDcqQCb6ibc"/>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 w-full max-w-[1200px] mx-auto p-6 md:p-8 lg:p-10 flex flex-col gap-8">
+<div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8 flex flex-col md:flex-row items-center md:items-start gap-6 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl pointer-events-none"></div>
+<div class="relative w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-white shadow-md bg-slate-100 overflow-hidden shrink-0">
+<img alt="Rizky A" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjNU62ge4pZYLwBV7aOMMKBR17Es-jXkqdMFdLTw0hNj2XOu44BjeJDrpYTPrBhJlWAOZQmpnb2G_NCk9AyObNDg1sn52BLEZhuQyqzp9paWdRCB945IBcCUN4EaQh8e67qMvFGVp01vOpFFtqsQIWrFjVwxpLy2ahBEhXB-c0g67-jNWwoe8PYDnAqBlMyuTBjg-X5WIkZLyl06zia2rpgQoSMQIuu6741Amlalvf3iFNs8-zgB7mpnvhRzI2ctu4PFNWKy-s_H4"/>
+</div>
+<div class="flex-1 text-center md:text-left z-10">
+<h1 class="text-3xl font-black text-slate-900 tracking-tight">Rizky Adhiotomo</h1>
+<p class="text-slate-500 font-medium mt-1 mb-4 flex items-center justify-center md:justify-start gap-2">
+<span class="material-symbols-outlined text-[18px]">mail</span> rizky.adhi@example.com
+            </p>
+<div class="flex flex-wrap justify-center md:justify-start gap-3 mt-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 text-sm font-semibold text-slate-700 border border-slate-200">
+<span class="w-2 h-2 rounded-full bg-primary"></span> Member since 2023
+                </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 text-sm font-semibold text-slate-700 border border-slate-200">
+<span class="material-symbols-outlined text-[16px] text-slate-500">location_on</span> Jakarta, Indonesia
+                </span>
+</div>
+</div>
+<div class="w-full md:w-72 bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl p-5 text-white shadow-lg relative overflow-hidden shrink-0 group">
+<div class="absolute -right-4 -bottom-4 w-32 h-32 opacity-20 pointer-events-none">
+<span class="material-symbols-outlined text-9xl">shield_person</span>
+</div>
+<div class="flex items-start justify-between relative z-10 mb-4">
+<div>
+<p class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Watchdog Level</p>
+<h3 class="text-xl font-black text-white flex items-center gap-2">
+                        Senior Inspector
+                        <span class="material-symbols-outlined text-warning text-xl" title="Verified Watchdog">verified</span>
+</h3>
+</div>
+<div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
+<span class="material-symbols-outlined text-2xl text-primary">robot_2</span>
+</div>
+</div>
+<div class="relative z-10">
+<div class="flex justify-between text-xs text-slate-300 font-medium mb-2">
+<span>1,240 XP</span>
+<span>Next: Chief Watchdog (2k XP)</span>
+</div>
+<div class="w-full bg-slate-700 rounded-full h-2.5 overflow-hidden">
+<div class="bg-primary h-2.5 rounded-full" style="width: 62%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<div class="lg:col-span-7 flex flex-col gap-6">
+<div class="bg-white rounded-2xl border border-slate-200 shadow-sm flex flex-col h-[600px] overflow-hidden">
+<div class="px-6 py-5 border-b border-slate-200 flex justify-between items-center bg-slate-50/50">
+<div>
+<h3 class="font-bold text-slate-900 text-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">history</span> Engagement History
+                        </h3>
+<p class="text-xs text-slate-500 mt-1">Your recent civic actions and tracking contributions.</p>
+</div>
+<button class="text-xs text-slate-500 hover:text-primary font-bold transition-colors flex items-center gap-1 bg-white border border-slate-200 px-3 py-1.5 rounded-lg shadow-sm">
+                        Filter <span class="material-symbols-outlined text-[14px]">filter_list</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-2">
+<div class="divide-y divide-slate-100">
+<div class="p-4 hover:bg-slate-50 transition-colors rounded-xl flex gap-4 items-start group">
+<div class="w-10 h-10 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 text-blue-600 mt-1">
+<span class="material-symbols-outlined text-[20px]">how_to_vote</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="text-sm font-bold text-slate-900">Voted on Reforestation Project</h4>
+<span class="text-xs text-slate-400 font-medium whitespace-nowrap ml-2">2 hrs ago</span>
+</div>
+<p class="text-sm text-slate-600">You voted "Requires Audit" on the Kalimantan Region Reforestation Initiative.</p>
+<div class="mt-2 flex gap-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600 border border-slate-200">Vote Recorded</span>
+</div>
+</div>
+</div>
+<div class="p-4 hover:bg-slate-50 transition-colors rounded-xl flex gap-4 items-start group">
+<div class="w-10 h-10 rounded-full bg-warning/10 border border-warning/20 flex items-center justify-center shrink-0 text-warning mt-1">
+<span class="material-symbols-outlined text-[20px]">edit_document</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="text-sm font-bold text-slate-900">Drafted Complaint #402</h4>
+<span class="text-xs text-slate-400 font-medium whitespace-nowrap ml-2">Yesterday</span>
+</div>
+<p class="text-sm text-slate-600">Started drafting a complaint regarding the delayed waste management facility in West Java.</p>
+<div class="mt-2 flex gap-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-warning/10 text-warning border border-warning/20">Drafting</span>
+</div>
+</div>
+</div>
+<div class="p-4 hover:bg-slate-50 transition-colors rounded-xl flex gap-4 items-start group">
+<div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 text-primary mt-1">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="text-sm font-bold text-slate-900">Verified Evidence: Air Quality</h4>
+<span class="text-xs text-slate-400 font-medium whitespace-nowrap ml-2">3 days ago</span>
+</div>
+<p class="text-sm text-slate-600">Successfully cross-referenced PM2.5 sensor data for the industrial zone report.</p>
+<div class="mt-2 flex gap-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-primary/10 text-primary border border-primary/20">+50 XP Awarded</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600 border border-slate-200">Verified</span>
+</div>
+</div>
+</div>
+<div class="p-4 hover:bg-slate-50 transition-colors rounded-xl flex gap-4 items-start group">
+<div class="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center shrink-0 text-slate-500 mt-1">
+<span class="material-symbols-outlined text-[20px]">forum</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="text-sm font-bold text-slate-900">Commented on Policy Gap</h4>
+<span class="text-xs text-slate-400 font-medium whitespace-nowrap ml-2">1 week ago</span>
+</div>
+<p class="text-sm text-slate-600">"The allocated budget doesn't match the required implementation scale for the EV rollout."</p>
+</div>
+</div>
+<div class="p-4 hover:bg-slate-50 transition-colors rounded-xl flex gap-4 items-start group">
+<div class="w-10 h-10 rounded-full bg-danger/10 border border-danger/20 flex items-center justify-center shrink-0 text-danger mt-1">
+<span class="material-symbols-outlined text-[20px]">flag</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="text-sm font-bold text-slate-900">Flagged Inconsistent Statement</h4>
+<span class="text-xs text-slate-400 font-medium whitespace-nowrap ml-2">2 weeks ago</span>
+</div>
+<p class="text-sm text-slate-600">Flagged a statement regarding clean water access in rural areas for review.</p>
+<div class="mt-2 flex gap-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600 border border-slate-200">Under Review</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 border-t border-slate-200 bg-slate-50/50 text-center">
+<button class="text-sm font-bold text-primary hover:text-primary-dark transition-colors">Load More Activity</button>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5 flex flex-col gap-6">
+<div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+<div class="px-6 py-5 border-b border-slate-200 bg-slate-50/50">
+<h3 class="font-bold text-slate-900 text-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-500">tune</span> Preference Center
+                    </h3>
+</div>
+<div class="p-6 space-y-6">
+<div>
+<h4 class="text-sm font-bold text-slate-800 mb-3 flex items-center justify-between">
+                            Regions of Interest
+                            <button class="text-primary text-xs hover:underline">Edit</button>
+</h4>
+<div class="bg-slate-50 rounded-xl p-4 border border-slate-200">
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-2 text-sm font-medium text-slate-700">
+<span class="material-symbols-outlined text-slate-400 text-[18px]">location_city</span>
+                                    DKI Jakarta <span class="text-slate-400 mx-1">›</span> All Cities
+                                </div>
+<div class="flex items-center gap-2 text-sm font-medium text-slate-700">
+<span class="material-symbols-outlined text-slate-400 text-[18px]">location_city</span>
+                                    West Java <span class="text-slate-400 mx-1">›</span> Bandung
+                                </div>
+</div>
+<button class="mt-4 w-full py-2 border border-dashed border-slate-300 rounded-lg text-sm font-semibold text-slate-500 hover:text-primary hover:border-primary hover:bg-primary/5 transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[18px]">add</span> Add Region
+                            </button>
+</div>
+</div>
+<div>
+<h4 class="text-sm font-bold text-slate-800 mb-3">Notification Triggers</h4>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm font-medium text-slate-900">Critical Action Gaps</p>
+<p class="text-xs text-slate-500">Alerts when promises miss targets by &gt;30%</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/30 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm font-medium text-slate-900">New Policy Announcements</p>
+<p class="text-xs text-slate-500">Updates in your regions of interest</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/30 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm font-medium text-slate-900">Weekly Digest</p>
+<p class="text-xs text-slate-500">Summary of environmental accountability</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/30 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex-1">
+<div class="px-6 py-5 border-b border-slate-200 bg-slate-50/50">
+<h3 class="font-bold text-slate-900 text-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-500">manage_accounts</span> Account Controls
+                    </h3>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex items-center justify-between p-4 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600">
+<span class="material-symbols-outlined">email</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900">Email Address</p>
+<p class="text-xs text-slate-500">rizky.adhi@example.com</p>
+</div>
+</div>
+<button class="text-sm font-semibold text-slate-600 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-50 transition-colors">Change</button>
+</div>
+<div class="flex items-center justify-between p-4 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600">
+<span class="material-symbols-outlined">key</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900">Password</p>
+<p class="text-xs text-slate-500">Last changed 3 months ago</p>
+</div>
+</div>
+<button class="text-sm font-semibold text-slate-600 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-50 transition-colors">Update</button>
+</div>
+<div class="flex items-center justify-between p-4 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600">
+<span class="material-symbols-outlined">link</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900">Linked Accounts</p>
+<p class="text-xs text-slate-500">Google Connected</p>
+</div>
+</div>
+<button class="text-sm font-semibold text-slate-600 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-50 transition-colors">Manage</button>
+</div>
+</div>
+<div class="px-6 py-4 border-t border-slate-200 bg-slate-50/50 mt-auto">
+<button class="w-full py-2.5 text-danger font-bold text-sm rounded-lg hover:bg-danger/10 transition-colors">Sign Out</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+</body></html>

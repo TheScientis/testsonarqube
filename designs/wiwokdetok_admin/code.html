@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WIWOKDETOK Command Center (Light)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10B981",
+                        "primary-dark": "#059669",
+                        "background-main": "#FFFFFF",
+                        "slate-950": "#020617",
+                        "warning": "#F59E0B",
+                        "danger": "#FA5538"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "geist": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            h1 {
+                font-family: 'Inter', sans-serif;
+                font-weight: 900;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background-main text-slate-900 font-display min-h-screen flex flex-col antialiased selection:bg-primary selection:text-white">
+<div class="relative flex h-full w-full flex-col overflow-x-hidden">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200 bg-white px-10 py-4 sticky top-0 z-50">
+<div class="flex items-center gap-4 text-slate-900">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight">WIWOKDETOK</h2>
+</div>
+<nav class="hidden md:flex flex-1 justify-center gap-8">
+<a class="text-primary text-sm font-bold leading-normal border-b-2 border-primary pb-0.5" href="#">Command Center</a>
+<a class="text-slate-600 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">The Talk Ledger</a>
+<a class="text-slate-600 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Bang Jaga AI</a>
+<a class="text-slate-600 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Walk-o-Meter</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center gap-2 mr-4 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-200 cursor-pointer hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined text-xs text-slate-500">eco</span>
+<span class="text-xs font-medium text-slate-500">Data-Saver</span>
+<div class="w-8 h-4 bg-slate-200 rounded-full relative">
+<div class="w-4 h-4 bg-white rounded-full absolute left-0 shadow-sm transform transition-transform duration-200"></div>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-transparent hover:bg-slate-50 text-slate-900 text-sm font-bold border border-slate-200 transition-colors">
+<span class="truncate">Log In</span>
+</button>
+<button class="flex items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary hover:bg-primary-dark text-white text-sm font-bold shadow-sm transition-colors">
+<span class="truncate">Sign Up</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 w-full max-w-[1440px] mx-auto p-6 md:p-8 lg:p-10 flex flex-col gap-8">
+<div class="flex flex-col gap-8">
+<div class="flex flex-col md:flex-row justify-between items-start gap-6">
+<div class="text-center md:text-left space-y-4 max-w-4xl">
+<h1 class="text-5xl md:text-7xl font-black tracking-tighter text-slate-900 leading-[0.9]">
+                        Admin Crawl &amp; <span class="text-primary">Ingest Control.</span>
+</h1>
+<p class="text-lg md:text-xl text-slate-500 max-w-2xl font-normal">
+                        Internal administrative dashboard for monitoring web-crawling and legal document ingestion for environmental accountability.
+                    </p>
+</div>
+<div class="bg-blue-50 border border-blue-100 rounded-[12px] p-4 flex items-start gap-4 max-w-md w-full md:w-auto self-end">
+<div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-blue-600 text-2xl">engineering</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-blue-900">Bang Jaga Says:</h4>
+<p class="text-xs text-blue-700 mt-1">"System is running optimally. 2 new PDFs ingested and 15 crawlers active."</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white p-6 rounded-[12px] border border-slate-200 shadow-sm flex flex-col justify-between hover:border-primary/50 transition-colors">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">data_usage</span>
+<p class="text-slate-500 text-xs font-semibold uppercase tracking-wider">Crawl Success Rate</p>
+</div>
+<div>
+<p class="text-4xl font-black text-slate-900">98.5%</p>
+<p class="text-sm text-slate-500 mt-2 flex items-center gap-1">
+<span class="text-primary flex items-center"><span class="material-symbols-outlined text-sm">trending_up</span> +0.5%</span> from yesterday
+                        </p>
+</div>
+</div>
+<div class="bg-white p-6 rounded-[12px] border border-slate-200 shadow-sm flex flex-col justify-between hover:border-primary/50 transition-colors">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-blue-500">search</span>
+<p class="text-slate-500 text-xs font-semibold uppercase tracking-wider">New Promises Found</p>
+</div>
+<div>
+<p class="text-4xl font-black text-slate-900">142</p>
+<p class="text-sm text-slate-500 mt-2 flex items-center gap-1">
+<span class="text-blue-500 flex items-center"><span class="material-symbols-outlined text-sm">trending_up</span> 12</span> today
+                        </p>
+</div>
+</div>
+<div class="bg-white p-6 rounded-[12px] border border-slate-200 shadow-sm flex flex-col justify-between hover:border-primary/50 transition-colors">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-purple-500">database</span>
+<p class="text-slate-500 text-xs font-semibold uppercase tracking-wider">Vector Store Size</p>
+</div>
+<div>
+<p class="text-4xl font-black text-slate-900">1.2M</p>
+<p class="text-sm text-slate-500 mt-2 flex items-center gap-1">
+<span class="text-purple-500 flex items-center"><span class="material-symbols-outlined text-sm">add</span> 5k</span> embeddings
+                        </p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<div class="lg:col-span-8 flex flex-col gap-6">
+<div class="bg-white rounded-[12px] border border-slate-200 shadow-sm overflow-hidden flex-1">
+<div class="px-6 py-4 border-b border-slate-200 flex justify-between items-center bg-slate-50/50">
+<h3 class="font-bold text-slate-900 flex items-center gap-2"><span class="material-symbols-outlined text-slate-500">list_alt</span> Crawl Log</h3>
+<button class="text-xs text-primary font-bold hover:underline flex items-center gap-1">View Full Logs <span class="material-symbols-outlined text-[14px]">arrow_forward</span></button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm whitespace-nowrap">
+<thead class="bg-slate-50 text-slate-500 font-medium">
+<tr>
+<th class="px-6 py-3">Source</th>
+<th class="px-6 py-3">Type</th>
+<th class="px-6 py-3">Last Run</th>
+<th class="px-6 py-3">Status</th>
+<th class="px-6 py-3 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 text-slate-700">
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4 font-medium text-slate-900">Detik News</td>
+<td class="px-6 py-4">News Site</td>
+<td class="px-6 py-4">2 mins ago</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Success
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors p-1" title="Re-run Job">
+<span class="material-symbols-outlined text-lg">refresh</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4 font-medium text-slate-900">Twitter - Environmental Tags</td>
+<td class="px-6 py-4">Social Media</td>
+<td class="px-6 py-4">In Progress...</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span> In-Progress
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors p-1" title="Stop Job">
+<span class="material-symbols-outlined text-lg">stop_circle</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4 font-medium text-slate-900">Ministry of Environment PR</td>
+<td class="px-6 py-4">Gov Portal</td>
+<td class="px-6 py-4">1 hour ago</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-danger/10 text-danger">
+<span class="w-1.5 h-1.5 rounded-full bg-danger"></span> Error
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors p-1" title="Re-run Job">
+<span class="material-symbols-outlined text-lg">refresh</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4 font-medium text-slate-900">Kompas</td>
+<td class="px-6 py-4">News Site</td>
+<td class="px-6 py-4">3 hours ago</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Success
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors p-1" title="Re-run Job">
+<span class="material-symbols-outlined text-lg">refresh</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col gap-6">
+<div class="bg-white rounded-[12px] border border-slate-200 shadow-sm p-6 flex flex-col gap-4">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-bold text-lg text-slate-900 flex items-center gap-2"><span class="material-symbols-outlined text-slate-500">upload_file</span> Regulation Ingestor</h3>
+</div>
+<div class="border-2 border-dashed border-slate-300 rounded-xl p-8 flex flex-col items-center justify-center text-center hover:bg-slate-50 hover:border-primary transition-all cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center mb-3 group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl text-slate-400 group-hover:text-primary">cloud_upload</span>
+</div>
+<p class="text-sm font-bold text-slate-700 mb-1">Drag &amp; drop PDF files</p>
+<p class="text-xs text-slate-500">Support for Perda and UU documents</p>
+<button class="mt-4 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg transition-colors">Browse Files</button>
+</div>
+<div class="mt-4">
+<h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">Recent Uploads</h4>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-3 border border-slate-100 rounded-lg bg-slate-50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-danger">picture_as_pdf</span>
+<div>
+<p class="text-sm font-medium text-slate-800">UU_No_32_2009.pdf</p>
+<p class="text-[10px] text-slate-500">2.4 MB</p>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-medium bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-[12px]">check</span> Indexed
+                                    </span>
+</div>
+<div class="flex items-center justify-between p-3 border border-slate-100 rounded-lg bg-slate-50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-danger">picture_as_pdf</span>
+<div>
+<p class="text-sm font-medium text-slate-800">Perda_DKI_Sampah.pdf</p>
+<p class="text-[10px] text-slate-500">1.1 MB</p>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-medium bg-blue-100 text-blue-700">
+<span class="material-symbols-outlined text-[12px] animate-spin">sync</span> Indexing...
+                                    </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

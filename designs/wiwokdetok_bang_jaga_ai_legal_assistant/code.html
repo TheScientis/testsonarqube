@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bang Jaga AI Assistant v1.2</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #10B981;
+            --trust-green-tint: #ecfdf5;
+            --user-bubble: #f3f4f6;
+            --border-light: #e5e7eb;
+            --desk-bg: #f9fafb;
+        }
+        @layer base {
+            body {
+                @apply bg-white text-slate-800;
+            }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10B981",
+                        "trust-green": "#10B981",
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"],
+                        "serif": ["Noto Serif", "serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-sans h-screen flex flex-col overflow-hidden bg-white">
+<header class="flex items-center justify-between border-b border-[var(--border-light)] bg-white px-6 py-3 shrink-0 z-20">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center size-8 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined font-bold">gavel</span>
+</div>
+<h2 class="text-slate-900 text-lg font-bold leading-tight tracking-tight">Bang Jaga AI</h2>
+</div>
+<div class="flex items-center gap-8">
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-500 hover:text-primary transition-colors text-sm font-medium" href="#">Home</a>
+<a class="text-slate-500 hover:text-primary transition-colors text-sm font-medium" href="#">Legal Docs</a>
+<a class="text-primary text-sm font-semibold" href="#">Chat</a>
+<a class="text-slate-500 hover:text-primary transition-colors text-sm font-medium" href="#">Promises Tracker</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="size-8 flex items-center justify-center rounded-full hover:bg-slate-100 text-slate-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 ring-2 ring-slate-100" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAVbybqexTX7gkbtlZcntRSMXC2Dg_kfNJsMsX1TOFQO0Hdk6_NYavjnTA_MZE1974nGCSleIIXcKFGJlzsWD4M-f2w3NKkLOgcI-Rjf9CiV2iJXIzqO0TfeaCykHdjLGjppiGu2MrWWfaHPIembgSX7Ty9vX2Lao25PAKk0hV_FpxLgopAGhqWRANq3gkysIbg0PxC2kH26PEFF6-wsfM975TMmJyVqFUXu4WtqBlbTc3aS5t_kFgkYhzrYQhtPMpJqhoZyBUPmzs");'></div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<aside class="w-64 bg-white border-r border-[var(--border-light)] flex flex-col shrink-0 hidden lg:flex">
+<div class="p-4 border-b border-[var(--border-light)]">
+<button class="flex items-center justify-center gap-2 w-full py-3 px-4 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all shadow-sm font-semibold">
+<span class="material-symbols-outlined">add</span>
+<span>New Consultation</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-3 space-y-1">
+<div class="px-3 py-2 text-xs font-bold text-slate-400 uppercase tracking-widest">Today</div>
+<button class="w-full text-left flex items-center gap-3 px-3 py-3 rounded-xl bg-slate-50 border border-slate-100 text-slate-900 group">
+<span class="material-symbols-outlined text-primary">chat_bubble</span>
+<div class="flex-1 overflow-hidden">
+<div class="truncate text-sm font-semibold">Illegal Dumping Ciliwung</div>
+<div class="truncate text-xs text-slate-500">Drafting complaint letter...</div>
+</div>
+</button>
+<button class="w-full text-left flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-slate-50 text-slate-600 transition-colors group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-slate-600">history</span>
+<div class="flex-1 overflow-hidden">
+<div class="truncate text-sm font-medium">Air Quality Report</div>
+<div class="truncate text-xs text-slate-400">2 hours ago</div>
+</div>
+</button>
+<div class="px-3 py-2 mt-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Previous 7 Days</div>
+<button class="w-full text-left flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-slate-50 text-slate-600 transition-colors group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-slate-600">history</span>
+<div class="flex-1 overflow-hidden">
+<div class="truncate text-sm font-medium">Neighborhood Noise</div>
+<div class="truncate text-xs text-slate-400">Tue, Oct 24</div>
+</div>
+</button>
+</div>
+<div class="p-4 border-t border-[var(--border-light)] bg-slate-50/50">
+<div class="flex items-center gap-3">
+<div class="relative flex items-center justify-center size-10 rounded-full bg-primary/10 overflow-hidden">
+<div class="bg-center bg-no-repeat w-full h-full bg-cover relative z-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB6DfyYRjKJ-ctKfrpynUEWqs4UQa9ko2PS8O-RRxbCMYCheceJB6YRHrnw6zNRz75CnpWdsSjKyTR1uDEaHw5jybs_7cgPRB0S9mp5RJQIuNrXMzPheycLdFPONwuwLyHvA6hoLTfHrP8OHVM5B3kDDWETVEudrIS2wMGf_Fhy8bWS-FY3Kwg8mrewq-3c21h5VqIdZTpeb1Cxmp4Vya3Rzw3YHx_RCh8gIIc-fj6lkZ4XSNtU588dvrE80G8FIW0mnvlpsOUP48s");'></div>
+</div>
+<div>
+<div class="text-sm font-bold text-slate-900">Bang Jaga Active</div>
+<div class="text-xs text-primary font-medium">Ready to assist</div>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col relative min-w-0 bg-white">
+<div class="flex-1 overflow-y-auto p-6 space-y-6 scroll-smooth">
+<div class="flex gap-4 max-w-3xl mx-auto w-full">
+<div class="size-10 rounded-full bg-[var(--trust-green-tint)] flex items-center justify-center shrink-0 border border-primary/10 overflow-hidden">
+<div class="bg-center bg-no-repeat w-full h-full bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDespuk70c-u2tnEO13ov0elrWu4fMiOWamXhR7yKDrPLdbHYwcXU-TAg94whguqUHZUCmhHeb1OVbea0fBptgaY3Bkems1ElfYHGq5e6I3cuqxdIMrdHj28080EolsC1OYQ2HX-AtyWVvFhFHYX5PRij2khuB_Wlligs0Yp-2lO_7mYvrPWt2nroNXxfP0NabDUHYKTegOUYL8CJxofI8efBhP5UsrpZf46dHGkyDvCdya3aVHaZnlmbuE_j35e9ziP1kDIhCX1YU");'></div>
+</div>
+<div class="flex flex-col gap-1 max-w-[85%]">
+<div class="flex items-baseline gap-2">
+<span class="text-sm font-bold text-slate-900">Bang Jaga</span>
+<span class="text-xs text-slate-400">10:42 AM</span>
+</div>
+<div class="p-4 rounded-2xl rounded-tl-none bg-[var(--trust-green-tint)] text-slate-800 shadow-sm border border-primary/5">
+<p class="leading-relaxed">Hello! I'm here to help you draft a formal complaint regarding environmental issues. I see you want to report illegal waste dumping near the Ciliwung river bank.</p>
+<p class="mt-2 leading-relaxed">Could you provide more specific details about the location (RT/RW or landmarks) and the type of waste you observed? This will help make the <span class="font-serif italic text-primary font-medium">Surat Pengaduan</span> stronger.</p>
+</div>
+</div>
+</div>
+<div class="flex flex-row-reverse gap-4 max-w-3xl mx-auto w-full">
+<div class="size-10 rounded-full bg-slate-200 flex items-center justify-center shrink-0 overflow-hidden border border-slate-300">
+<div class="bg-center bg-no-repeat w-full h-full bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDp8W2LiE_xruhNH6fKW4ntlAGfFNOvJJ3JjcDzURwW3lm1BJFODmU9_QoBl8t_N0ahT8KhxIrX_YDvQwcr6pbGEn467Z3NzXmT1z8EwCMCedkMotXGKsE3wDLC0oDZQFhECwPUCQJm5OVU1rilbWSykeRqnpNsEG9a3DlLuJ8uVP-L6NWpl7I_rwnSZgby_R8NdyEhpg7_SByCipvvp0merQAFdw37smcVg8wprkHhZ6S8cBVgIeM4CgL4lJs53MiqfavlBnZ2Gr8");'></div>
+</div>
+<div class="flex flex-col gap-1 items-end max-w-[85%]">
+<div class="flex items-baseline gap-2 flex-row-reverse">
+<span class="text-sm font-bold text-slate-900">You</span>
+<span class="text-xs text-slate-400">10:45 AM</span>
+</div>
+<div class="p-4 rounded-2xl rounded-tr-none bg-[var(--user-bubble)] text-slate-800 shadow-sm border border-slate-200">
+<p class="leading-relaxed">It was near the bridge at Jatinegara, specifically RT 04/RW 02. I saw construction debris and plastic waste being dumped by a small truck around 9 AM this morning. Here are some photos.</p>
+</div>
+<div class="flex gap-2 mt-2 flex-wrap justify-end">
+<div class="relative group cursor-pointer overflow-hidden rounded-lg w-16 h-12 border border-slate-200 shadow-sm">
+<div class="bg-center bg-no-repeat w-full h-full bg-cover transition-transform group-hover:scale-110" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA0VzpJprtwrFgw_cZH53ZmwZ96pN1fHZAfg9kG0aXZXsErodJsyL2zFM1RNXSu1xY4BO7Cw3BwxzAjlrJp8Q2DcQuZMXMjCndzrmEm6M9Sn6em85utfpFw0RrRKdjZWzwUjM6qB-lTgS6CQs77KmKwP52djmhxmR1LlbuGv1QOt31wycfRbucDkl6rjLGrFBLUd_2BYclNpfjbzbPL9dGIO37a_6GjSoNXjgLAt4z2DGTpyrHRqQ0z0nqk7YYai4PNfwv5yDD2jlE");'></div>
+</div>
+<div class="relative group cursor-pointer overflow-hidden rounded-lg w-16 h-12 border border-slate-200 shadow-sm">
+<div class="bg-center bg-no-repeat w-full h-full bg-cover transition-transform group-hover:scale-110" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA3W6sasvMtPjsTHPLe7ifcwMyVUn9oWCRWOLT08wg6Ultb4HBseqy2uMhc8-WjTOvdaWOjQ1X8l0nCkB4LV5veG6KKVlYAdOww-HeSwoGNBz8TCDMOCpIybmBzYeRrNNAE9qdrqFwZAAfs4KcWq3OF-mor6KfZ4-MkkNMBabxcIbSWvSAgaH0gfR5PJ4mvwCQFk-zFImtMzdmbPEnbNai0m3FGdN8cgyiYPKGRo2YBXc2QhwkGLW-FDtBHSsZHq-XaV8H2y3mXjes");'></div>
+</div>
+<div class="relative group cursor-pointer overflow-hidden rounded-lg w-16 h-12 border border-slate-200 shadow-sm flex items-center justify-center bg-slate-100 text-slate-400 hover:text-primary hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-lg">add_a_photo</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex gap-4 max-w-3xl mx-auto w-full">
+<div class="size-10 rounded-full bg-[var(--trust-green-tint)] flex items-center justify-center shrink-0 border border-primary/10 overflow-hidden">
+<div class="bg-center bg-no-repeat w-full h-full bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCS-x5BqfjtD9PpeOD6wvCW4UM-aMf4WAXLySZvGp1H1I9HK9onQMeZby08OpCy_kiC6wvbRZPjUf7FEx4zCv1zXnBOBng9x-whqCoqFMF8JbrxhkVzd5L9jTeh9Lpis7U-aDvdIB3wF0Uv4BJf86ldZzaFrB1eNerSMNsh4OIFJiIKc_Em9-VdqlbGrJtpIWkrOxoRKMHsWNrd7Cr1B8IzvOKFuJh4Pg1C4v0XPZxbG7w1LOVV2yJmgOLcWfan-qZLaGO17G3-d5s");'></div>
+</div>
+<div class="flex flex-col gap-1 max-w-[85%]">
+<div class="flex items-baseline gap-2">
+<span class="text-sm font-bold text-slate-900">Bang Jaga</span>
+<span class="text-xs text-slate-400">10:46 AM</span>
+</div>
+<div class="p-4 rounded-2xl rounded-tl-none bg-[var(--trust-green-tint)] text-slate-800 shadow-sm border border-primary/5">
+<p class="leading-relaxed">Understood. This violates <span class="text-primary font-bold hover:underline cursor-pointer bg-primary/10 px-1 rounded">Perda DKI Jakarta No. 3 Tahun 2013</span> regarding Waste Management. I've updated the document on the right panel.</p>
+<p class="mt-2 text-sm text-slate-600 italic">Would you like to add more evidence or should I finalize the draft for WhatsApp sharing?</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 bg-white border-t border-[var(--border-light)]">
+<div class="max-w-3xl mx-auto w-full relative">
+<div class="flex gap-2 mb-3 overflow-x-auto pb-2 scrollbar-hide">
+<button class="whitespace-nowrap flex items-center gap-1.5 py-1.5 px-3 text-xs font-semibold text-slate-600 bg-slate-100 border border-slate-200 hover:bg-slate-200 hover:text-slate-800 rounded-full transition-colors" type="button">
+<span class="material-symbols-outlined text-[14px]">school</span>
+                        Learn Regulations
+                    </button>
+<button class="whitespace-nowrap flex items-center gap-1.5 py-1.5 px-3 text-xs font-semibold text-slate-600 bg-slate-100 border border-slate-200 hover:bg-slate-200 hover:text-slate-800 rounded-full transition-colors" type="button">
+<span class="material-symbols-outlined text-[14px]">edit_document</span>
+                        Draft Surat Pengaduan
+                    </button>
+<button class="whitespace-nowrap flex items-center gap-1.5 py-1.5 px-3 text-xs font-semibold text-slate-600 bg-slate-100 border border-slate-200 hover:bg-slate-200 hover:text-slate-800 rounded-full transition-colors" type="button">
+<span class="material-symbols-outlined text-[14px]">report</span>
+                        Report Pollution
+                    </button>
+</div>
+<form class="flex flex-col gap-2 bg-slate-50 rounded-2xl p-2 border border-slate-200 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary/20 transition-all">
+<div class="flex items-center gap-2 px-2 pb-1 border-b border-slate-200/50">
+<button class="p-1.5 text-slate-500 hover:text-primary rounded-lg hover:bg-white transition-colors flex items-center gap-1" title="Attach Image" type="button">
+<span class="material-symbols-outlined text-[20px]">image</span>
+<span class="text-[10px] font-medium text-slate-400">(Up to 5)</span>
+</button>
+<button class="p-1.5 text-slate-500 hover:text-primary rounded-lg hover:bg-white transition-colors" title="Voice Input" type="button">
+<span class="material-symbols-outlined text-[20px]">mic</span>
+</button>
+<div class="h-4 w-px bg-slate-300 mx-1"></div>
+<button class="flex items-center gap-1.5 py-1 px-2 text-xs font-semibold text-primary bg-white border border-primary/20 hover:bg-primary/5 rounded-md transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">book</span>
+                            Search Laws (RAG)
+                        </button>
+</div>
+<div class="flex items-end gap-2">
+<textarea class="w-full bg-transparent text-slate-900 placeholder-slate-400 border-none focus:ring-0 resize-none max-h-32 min-h-[44px] py-2 px-3 leading-relaxed" placeholder="Type your message here..."></textarea>
+<button class="p-2.5 mb-1 bg-primary text-white rounded-xl hover:bg-primary/90 transition-colors shadow-sm shrink-0 flex items-center justify-center" type="submit">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</form>
+<div class="text-center mt-3 text-xs text-slate-400">
+                    Bang Jaga can make mistakes. Please verify legal information independently.
+                </div>
+</div>
+</div>
+</main>
+<aside class="w-[440px] bg-white border-l border-[var(--border-light)] flex flex-col shrink-0 relative z-10 hidden xl:flex">
+<div class="p-4 border-b border-[var(--border-light)] flex items-center justify-between bg-white">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">description</span>
+<h3 class="font-bold text-slate-900">Document Preview</h3>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-700 uppercase tracking-widest border border-amber-200 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>Live Update</span>
+<button class="flex items-center gap-1.5 py-1.5 px-3 text-xs font-semibold text-slate-600 bg-white border border-slate-200 hover:bg-slate-50 rounded-lg transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]">download</span>
+    Download PDF
+</button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-8 bg-[var(--desk-bg)] relative">
+<div class="bg-white text-slate-900 min-h-[600px] p-10 shadow-lg mx-auto rounded-sm max-w-full text-[11px] leading-relaxed font-serif relative border border-slate-200/50">
+<div class="text-center border-b-2 border-slate-800 pb-5 mb-6">
+<h1 class="font-bold text-sm uppercase mb-1 tracking-tight">Surat Pengaduan Masyarakat</h1>
+<p class="text-slate-500 italic">No: 001/BJ-AI/X/2023</p>
+</div>
+<div class="space-y-5">
+<div class="flex justify-between">
+<p>Jakarta, 24 Oktober 2023</p>
+<div class="text-right">
+<p>Kepada Yth,</p>
+<p class="font-bold">Kepala Dinas Lingkungan Hidup</p>
+<p>Provinsi DKI Jakarta</p>
+</div>
+</div>
+<p class="font-bold underline mt-6">Perihal: Laporan Pembuangan Sampah Ilegal di Bantaran Sungai Ciliwung</p>
+<p>Dengan hormat,</p>
+<p>Saya yang bertanda tangan di bawah ini, warga masyarakat yang peduli lingkungan, ingin melaporkan adanya dugaan pelanggaran peraturan daerah terkait pengelolaan sampah.</p>
+<div class="pl-4 border-l-2 border-slate-300 my-4 bg-slate-50 py-2">
+<p><span class="font-bold">Lokasi:</span> Jembatan Jatinegara, RT 04/RW 02</p>
+<p><span class="font-bold">Waktu:</span> 24 Oktober 2023, Pukul 09:00 WIB</p>
+<p><span class="font-bold">Jenis Pelanggaran:</span> Pembuangan puing bangunan dan sampah plastik menggunakan truk kecil.</p>
+</div>
+<p>Tindakan tersebut diduga melanggar <span class="bg-amber-50 border-b border-amber-200 px-1 font-semibold">Perda DKI Jakarta No. 3 Tahun 2013 tentang Pengelolaan Sampah, Pasal 126</span> yang melarang setiap orang membuang sampah di badan air.</p>
+<p>Sebagai bukti, saya lampirkan dokumentasi foto kejadian tersebut.</p>
+<div class="grid grid-cols-2 gap-3 my-4">
+<div class="aspect-video bg-slate-50 flex items-center justify-center text-slate-300 border border-slate-100 rounded overflow-hidden">
+<div class="bg-center bg-no-repeat w-full h-full bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA0VzpJprtwrFgw_cZH53ZmwZ96pN1fHZAfg9kG0aXZXsErodJsyL2zFM1RNXSu1xY4BO7Cw3BwxzAjlrJp8Q2DcQuZMXMjCndzrmEm6M9Sn6em85utfpFw0RrRKdjZWzwUjM6qB-lTgS6CQs77KmKwP52djmhxmR1LlbuGv1QOt31wycfRbucDkl6rjLGrFBLUd_2BYclNpfjbzbPL9dGIO37a_6GjSoNXjgLAt4z2DGTpyrHRqQ0z0nqk7YYai4PNfwv5yDD2jlE");'></div>
+</div>
+<div class="aspect-video bg-slate-50 flex items-center justify-center text-slate-300 border border-slate-100 rounded overflow-hidden">
+<div class="bg-center bg-no-repeat w-full h-full bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA3W6sasvMtPjsTHPLe7ifcwMyVUn9oWCRWOLT08wg6Ultb4HBseqy2uMhc8-WjTOvdaWOjQ1X8l0nCkB4LV5veG6KKVlYAdOww-HeSwoGNBz8TCDMOCpIybmBzYeRrNNAE9qdrqFwZAAfs4KcWq3OF-mor6KfZ4-MkkNMBabxcIbSWvSAgaH0gfR5PJ4mvwCQFk-zFImtMzdmbPEnbNai0m3FGdN8cgyiYPKGRo2YBXc2QhwkGLW-FDtBHSsZHq-XaV8H2y3mXjes");'></div>
+</div>
+</div>
+<p>Demikian surat pengaduan ini saya sampaikan. Besar harapan saya agar pihak terkait dapat segera menindaklanjuti laporan ini.</p>
+<p class="mt-10">Hormat saya,</p>
+<p class="mt-12 font-bold">[Nama Pelapor/Dirahasiakan]</p>
+</div>
+</div>
+</div>
+<div class="p-5 bg-white border-t border-[var(--border-light)] shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-20">
+<div class="mb-4">
+<label class="text-[10px] font-bold text-slate-400 mb-1.5 block uppercase tracking-widest">Legal Context</label>
+<div class="flex items-center gap-2 p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+<span class="material-symbols-outlined text-primary text-sm font-bold">menu_book</span>
+<input class="bg-transparent border-none text-xs text-slate-700 w-full focus:ring-0 p-0 font-medium" readonly="" type="text" value="Perda DKI Jakarta No. 3 Tahun 2013"/>
+<span class="material-symbols-outlined text-slate-400 text-sm cursor-pointer hover:text-slate-600 transition-colors">edit</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 py-3 px-2 bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-xl transition-all shadow-md shadow-[#25D366]/20 text-[11px] font-bold">
+<svg class="w-[16px] h-[16px] fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg>
+                    Quick-Copy WA
+                </button>
+<button class="flex items-center justify-center gap-2 py-3 px-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-all shadow-md shadow-blue-600/20 text-[11px] font-bold">
+<span class="material-symbols-outlined text-[16px]">map</span>
+                    Share to Map
+                </button>
+</div>
+</div>
+</aside>
+</div>
+</body></html>

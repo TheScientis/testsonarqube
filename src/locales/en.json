@@ -1,0 +1,30 @@
+{
+    "nav": {
+        "dashboard": "Command Center",
+        "promise_tracker": "The Talk Ledger",
+        "chat": "Bang Jaga AI",
+        "map": "Walk-o-Meter",
+        "feed": "Evidence Feed",
+        "profile": "Profile",
+        "login": "Log In",
+        "signup": "Sign Up",
+        "data_saver": "Data Saver"
+    },
+    "hero": {
+        "title_main": "Turn Talk",
+        "title_highlight": "Into Action.",
+        "subtitle": "Tracking political promises against environmental realities. See the gap between what is said and what is done in real-time.",
+        "search_placeholder": "Search Regions, Politicians, or specific Promises..."
+    },
+    "stats": {
+        "commitments_tracked": "Commitments",
+        "promises_kept": "Kept",
+        "action_gap": "Action Gap",
+        "trust_score": "Trust Score"
+    },
+    "common": {
+        "view_all": "View All",
+        "interactive_map": "Interactive Map",
+        "submit_report": "Submit Report"
+    }
+}

@@ -1,0 +1,177 @@
+---
+alwaysApply: false
+description: Standardized rules for generating Playwright E2E automation tests, emphasizing POM, Fixtures, and QA-readable documentation.
+---
+```
+
+## 🎯 Testing Philosophy
+
+Write test scripts directly from use cases or feature lists. No separate test documentation is needed. The test code itself acts as the living documentation through JSDoc comments, inline explanations, and Playwright test steps.
+
+**Universal Principles:**
+
+- **Self-documenting tests:** Code must be readable by manual QA testers.
+- **Strict Architecture:** Separate low-level UI actions (POM) from high-level workflows (Fixtures).
+- **Comprehensive Coverage:** Always cover both **Positive** (Happy Path) and **Negative** (Validation or Errors) scenarios.
+- **Data Isolation:** Ensure tests generate their own data and clean up after themselves.
+
+---
+
+## 🤖 AI Trigger & Workflow
+
+When asked to create tests for a use case or feature, you MUST follow these steps:
+
+1. **Analyze:** Read the provided feature context. Identify positive and negative scenarios.
+2. **Plan:** Determine necessary Page Objects, Fixtures, and Test Data.
+3. **Document:** Write the file header and JSDoc blocks before writing the logic.
+4. **Implement:** Write the Playwright spec utilizing `test.step()` for readability.
+
+---
+
+## 🏗️ Architecture: POM vs. Fixtures
+
+**1. Page Objects (`e2e/pages/*.ts`):**
+
+Use for low-level, page-specific UI interactions (locators, clicks, typing).
+
+Rule: POM classes should NEVER contain assertions (`expect`). They only perform actions and return state.
+
+**2. Fixtures & Workflows (`e2e/fixtures/*.ts`):**
+
+Use for high-level business workflows that span multiple pages or require backend setup (e.g., `loginAsAdmin`, `createCompleteOrder`).
+
+---
+
+## 📝 Documentation & Readability (Crucial for QA)
+
+### 1. File Headers
+
+Every test file MUST start with this header:
+
+```tsx
+/**
+ * Feature: [Feature Name]
+ * Related Use Case: [ID or Link]
+ *
+ * Scope:
+ * - Positive Cases: [Brief list]
+ * - Negative Cases: [Brief list]
+ * - Edge Cases: [Brief list]
+ */
+```
+
+### 2. Playwright Test Steps (Better than console.log)
+
+Instead of relying solely on `console.log`, wrap logical blocks of actions in `test.step()`. This documents the flow directly in the Playwright HTML report for manual QA testers.
+
+```tsx
+test('Complete user registration', async ({ page, registerFixture }) => {
+  await test.step('1. Navigate to the registration page', async () => {
+    await page.goto('/register');
+  });
+
+  await test.step('2. Fill out the form with valid data', async () => {
+    await registerFixture.fillDetails(testUser);
+  });
+
+  await test.step('3. Submit and verify success message', async () => {
+    await registerFixture.submit();
+    await expect(page.getByText('Success')).toBeVisible();
+  });
+});
+```
+
+### 3. JSDoc Comments
+
+Every Class and Method in POMs and Fixtures must have a JSDoc string explaining what it does, its parameters, and what it returns.
+
+---
+
+## 📂 File & Test Naming Conventions
+
+### File Names
+
+- `feature-name.spec.ts` (Core positive flows)
+- `feature-name.negative.spec.ts` (Validations, errors, unauthorized access)
+
+### Test Names
+
+Use highly descriptive, human-readable names:
+
+- ✅ `'Should successfully register a new family with one parent and two children'`
+- ✅ `'Should display a validation error when the email format is invalid'`
+- ❌ `'Test registration'`
+- ❌ `'Error state'`
+
+---
+
+## 🗄️ Test Data Management
+
+- **Generate locally:** Use timestamped IDs or generators (e.g., `faker`) to avoid state collisions.
+- **Seed & Clean:** Use `beforeEach` to set up required system state and `afterEach` to clean up.
+- **Avoid Dev Data:** Never rely on existing database records. Assume the database is empty.
+
+---
+
+## 🚧 What to Test vs. Skip
+
+**DO Test:**
+
+- Critical business rules and workflows.
+- Form validations and error messaging.
+- State changes (e.g., status updates from 'Pending' to 'Approved').
+- Positive and Negative user paths.
+
+**SKIP Testing:**
+
+- Exact Hex colors or specific typography (unless critical).
+- Third-party site behavior (mock these instead).
+- Flaky loading animations.
+
+---
+
+## 💡 Example Implementation Template
+
+```tsx
+/**
+ * Feature: User Registration MVP
+ *
+ * Scope:
+ * - Positive: Successful registration with valid data
+ * - Negative: Missing required fields, Duplicate email
+ */
+
+import { test, expect } from '@playwright/test';
+import { RegistrationPage } from '../pages/RegistrationPage';
+import { generateTestUser } from '../fixtures/test-data';
+
+test.describe('Registration Feature - Positive Scenarios', () => {
+  let regPage: RegistrationPage;
+
+  test.beforeEach(async ({ page }) => {
+    regPage = new RegistrationPage(page);
+    await regPage.navigate();
+  });
+
+  test('Should successfully register a user with valid data', async ({ page }) => {
+    const testUser = generateTestUser();
+
+    await test.step('Fill in valid user details', async () => {
+      await regPage.fillRegistrationForm(testUser);
+    });
+
+    await test.step('Submit the form', async () => {
+      await regPage.submitForm();
+    });
+
+    await test.step('Verify user is redirected to the dashboard', async () => {
+      await expect(page).toHaveURL(/.*dashboard/);
+      await expect(page.getByText(`Welcome, ${testUser.firstName}`)).toBeVisible();
+    });
+  });
+});
+
+test.describe('Registration Feature - Negative Scenarios', () => {
+  // Negative test cases go here
+});
+```

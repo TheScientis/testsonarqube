@@ -1,0 +1,30 @@
+{
+    "nav": {
+        "dashboard": "Pusat Komando",
+        "promise_tracker": "Rekam Jejak",
+        "chat": "AI Bang Jaga",
+        "map": "Walk-o-Meter",
+        "feed": "Rangkaian Bukti",
+        "profile": "Profil",
+        "login": "Masuk",
+        "signup": "Daftar",
+        "data_saver": "Hemat Data"
+    },
+    "hero": {
+        "title_main": "Ubah Janji",
+        "title_highlight": "Jadi Aksi.",
+        "subtitle": "Pantau janji-janji politik terhadap realita lingkungan. Lihat celah antara apa yang dikatakan dan yang dilakukan secara real-time.",
+        "search_placeholder": "Cari Daerah, Politisi, atau Janji spesifik..."
+    },
+    "stats": {
+        "commitments_tracked": "Janji Dipantau",
+        "promises_kept": "Janji Ditepati",
+        "action_gap": "Celah Aksi",
+        "trust_score": "Skor Kepercayaan"
+    },
+    "common": {
+        "view_all": "Lihat Semua",
+        "interactive_map": "Peta Interaktif",
+        "submit_report": "Kirim Laporan"
+    }
+}

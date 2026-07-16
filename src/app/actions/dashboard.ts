@@ -2,6 +2,7 @@
 
 import { supabase } from "@/lib/supabase";
 import type { Promise as PromiseType } from "@/lib/types";
+import { readFileSync } from "fs"; // (1) unused import - Code Smell
 
 export interface DashboardStats {
   totalCommitments: number;
@@ -52,6 +53,8 @@ export async function getDashboardStats(): globalThis.Promise<DashboardStats> {
   let trustLevel = "Low";
   if (gapPercent < 30) trustLevel = "High";
   else if (gapPercent < 50) trustLevel = "Medium";
+
+  console.log("debug stats", trustLevel); // (2) console.log tertinggal - Code Smell
 
   return {
     totalCommitments: commitments,

@@ -1,0 +1,6 @@
+projectKey=wiwokdetok
+serverUrl=http://localhost:9001
+serverVersion=26.7.0.124771
+dashboardUrl=http://localhost:9001/dashboard?id=wiwokdetok
+ceTaskId=3cca709e-b4e7-4e7f-ba3d-2242960628d3
+ceTaskUrl=http://localhost:9001/api/ce/task?id=3cca709e-b4e7-4e7f-ba3d-2242960628d3

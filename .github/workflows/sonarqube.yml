@@ -10,7 +10,7 @@ on:
 
 jobs:
   sonarqube-check:
-    runs-on: [self-hosted, local-sonar-2]
+    runs-on: [self-hosted]
 
     steps:
       - name: Checkout code

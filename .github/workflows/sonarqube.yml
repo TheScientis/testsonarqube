@@ -29,4 +29,4 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: npx sonar-scanner -D"sonar.projectKey=wiwokdetok" -D"sonar.qualitygate.wait=true"
+        run: npx sonar-scanner -D"sonar.projectKey=wiwokdetok" -D"sonar.host.url=${{ secrets.SONAR_HOST_URL }}" -D"sonar.qualitygate.wait=true"
